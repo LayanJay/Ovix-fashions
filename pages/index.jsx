@@ -1,7 +1,16 @@
-export default function Home() {
+import Layout from '../components/Layout'
+import Container from '../components/Layout/Container'
+
+const Home = () => {
   return (
-    <div className='flex flex-col items-center justify-center min-h-screen py-2'>
-      hello world
-    </div>
+    <Layout title="Oviz Fashions | Your Charming Beauty is Our Passion">
+      <Container>
+        <h1 className="text-brown-dark text-6xl font-roboto font-light">
+          Hello world
+        </h1>
+      </Container>
+    </Layout>
   )
 }
+
+export default Home

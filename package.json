@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fontsource/playfair-display": "^4.4.5",
+    "@fontsource/roboto": "^4.4.5",
     "@tailwindcss/forms": "^0.3.3",
     "next": "latest",
     "react": "^17.0.2",
