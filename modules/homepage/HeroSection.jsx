@@ -1,5 +1,7 @@
 import Image from 'next/image'
 import Container from '../../components/Layout/Container'
+import heroImage from '../../public/samples/hero-image.png'
+import mouse from '../../public/samples/mouse.png'
 
 const HeroSection = () => {
   return (
@@ -11,11 +13,11 @@ const HeroSection = () => {
         <section className="relative flex flex-col items-center">
           <div className="max-w-lg">
             <Image
-              src="/samples/hero-image.png"
+              src={heroImage}
               alt="hero section"
-              width={864}
-              height={1114}
               layout="intrinsic"
+              placeholder="empty"
+              quality={70}
             />
           </div>
           <div className="absolute top-1/2 transform -translate-y-1/2 flex flex-col items-center space-y-5">
@@ -31,11 +33,11 @@ const HeroSection = () => {
           </div>
           <div className="absolute bottom-4">
             <Image
-              src="/samples/mouse.png"
+              src={mouse}
               alt="mouse icon"
-              width={29}
-              height={44.52}
               layout="intrinsic"
+              placeholder="empty"
+              quality={70}
             />
           </div>
         </section>
