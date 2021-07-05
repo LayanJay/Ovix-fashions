@@ -20,6 +20,9 @@ const Navbar = ({ children, inverted }) => {
           <div className="">
             <div className="w-9">
               <Image src={inverted ? bagWhite : bagBlack} />
+              <div className="fixed -mt-5 -ml-1 bg-brown-semiDark text-white w-5 h-5 flex items-center justify-center font-bold rounded-full">
+                0
+              </div>
             </div>
           </div>
         </a>
