@@ -1,10 +1,10 @@
-import locationIcon from '../../public/assets/footer-icon-location.svg'
-import telIcon from '../../public/assets/footer-icon-tel.svg'
-import mailIcon from '../../public/assets/footer-icon-email.svg'
+import { MdLocationOn } from 'react-icons/md'
+import { MdLocalPhone } from 'react-icons/md'
+import { MdMailOutline } from 'react-icons/md'
+import { AiOutlineInstagram } from 'react-icons/ai'
+import { FaFacebookF } from 'react-icons/fa'
 
-import Image from 'next/image'
-
-const Footer = ({ children, inverted }) => {
+const Footer = () => {
   return (
     <footer className="footer bg-brown-dark opacity-75 relative pt-1 border-b-2 border-blue-700">
       <div className="container mx-auto px-6">
@@ -12,8 +12,8 @@ const Footer = ({ children, inverted }) => {
           <div className="mt-8 sm:mt-0 sm:w-full md:px-15 lg:px-24 flex flex-col md:flex-row justify-between">
             <div className="flex flex-col">
               <div className="my-2 flex flex-row">
-                <div className="w-9">
-                  <Image src={locationIcon} />
+                <div className=" bg-brown-light text-brown-dark w-10 py-4 text-2xl flex justify-center items-center rounded-full">
+                  <MdLocationOn />
                 </div>
                 <div className="text-white pl-4 w-56 flex items-center">
                   No. 420, Vihara Mawatha, Kaduwela, Malabe
@@ -21,8 +21,8 @@ const Footer = ({ children, inverted }) => {
               </div>
 
               <div className="my-2 flex flex-row">
-                <div className="w-9">
-                  <Image src={telIcon} />
+                <div className=" bg-brown-light text-brown-dark w-10 py-4 text-2xl flex justify-center items-center rounded-full">
+                  <MdLocalPhone />
                 </div>
                 <div className="text-white pl-4 w-56 flex items-center">
                   +94 76 6868 231
@@ -30,8 +30,8 @@ const Footer = ({ children, inverted }) => {
               </div>
 
               <div className="my-2 flex flex-row">
-                <div className="w-9">
-                  <Image src={mailIcon} />
+                <div className=" bg-brown-light text-brown-dark w-10 py-4 text-2xl flex justify-center items-center rounded-full">
+                  <MdMailOutline />
                 </div>
                 <div className="text-white pl-4 w-56 flex items-center">
                   info@ovizfashions.lk
@@ -50,11 +50,11 @@ const Footer = ({ children, inverted }) => {
                 </div>
               </span>
               <span className="my-2 flex gap-4">
-                <div className="w-9">
-                  <Image src={locationIcon} />
+                <div className=" bg-brown-light text-brown-dark w-10 py-4 text-2xl flex justify-center items-center rounded-full">
+                  <AiOutlineInstagram />
                 </div>
-                <div className="w-9">
-                  <Image src={locationIcon} />
+                <div className=" bg-brown-light text-brown-dark w-10 py-4 text-2xl flex justify-center items-center rounded-full">
+                  <FaFacebookF />
                 </div>
               </span>
             </div>
