@@ -1,5 +1,7 @@
 import Layout from '../components/Layout'
+import BusinessFeatures from '../modules/homepage/BusinessFeatures'
 import HeroSection from '../modules/homepage/HeroSection'
+import MainCategories from '../modules/homepage/MainCategories'
 
 const Home = () => {
   return (
@@ -8,6 +10,8 @@ const Home = () => {
       inverted={true}
     >
       <HeroSection />
+      <BusinessFeatures />
+      <MainCategories />
     </Layout>
   )
 }
