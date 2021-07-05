@@ -7,8 +7,8 @@ const Home = () => {
   return (
     <Layout title="Oviz Fashions | Your Charming Beauty is Our Passion">
       <HeroSection />
-      <MainCategories />
       <BusinessFeatures />
+      <MainCategories />
     </Layout>
   )
 }
