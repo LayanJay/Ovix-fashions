@@ -1,18 +1,20 @@
-const SingleProductPage = ({permalink}) => {
- return ( <h1>{permalink}</h1> );
+import Image from 'next/image'
+import commerce from '../../lib/commerce'
+import Product from '../../components/Product'
+const SingleProductPage = ({ product }) => {
+  return <Product product={product} />
 }
 
-export const getServerSideProps = (context) => {
- const permalink = context.query
-
-
-
- return{
-  props:{
-   permalink
+export const getServerSideProps = async (context) => {
+  const { permalink } = context.query
+  const product = await commerce.products.retrieve(permalink, {
+    type: 'permalink',
+  })
+  return {
+    props: {
+      product,
+    },
   }
- }
 }
 
- 
-export default SingleProductPage;
+export default SingleProductPage
