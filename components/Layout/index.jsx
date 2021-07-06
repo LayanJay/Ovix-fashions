@@ -9,7 +9,7 @@ const Layout = ({ children, title, inverted, fullFooter }) => {
 
   useEffect(() => {
     setIsFullFooter(fullFooter)
-  }, [])
+  }, [fullFooter])
 
   return (
     <>

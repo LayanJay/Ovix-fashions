@@ -1,6 +1,5 @@
 import commerce from '../../lib/commerce'
 import Product from '../../modules/SingleProductPage'
-import SmallFooter from '../../components/Layout/SmallFooter'
 import Layout from '../../components/Layout'
 const SingleProductPage = ({ product }) => {
   return (
