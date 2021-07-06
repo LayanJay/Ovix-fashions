@@ -15,7 +15,7 @@ const LatestSection = ({ products }) => {
         </div>
 
         <section className="grid grid-cols-1 grid-rows-1 lg:grid-cols-4 sm:grid-cols-2 gap-5 mb-10">
-          {products.map((product) => (
+          {products.slice(0, 4).map((product) => (
             <Product key={product.id} product={product} dark />
           ))}
         </section>

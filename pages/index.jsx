@@ -55,15 +55,13 @@ export const getServerSideProps = async () => {
     .then((response) => response.data)
 
   const latest = await Commerce.products
-    .list({
-      limit: limit,
-    })
+    .list()
     .then((response) => response.data)
 
   return {
     props: {
       featured,
-      latest,
+      latest: latest.reverse(),
     },
   }
 }
