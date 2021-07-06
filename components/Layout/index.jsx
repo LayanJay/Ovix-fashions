@@ -8,7 +8,7 @@ const Layout = ({ children, title, inverted }) => {
       <Head>
         <title>{title}</title>
       </Head>
-      <main className="text-textBlack">
+      <main className="text-textBlack font-roboto">
         <Navbar inverted={inverted} />
         {children}
         <Footer />
