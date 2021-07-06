@@ -3,7 +3,7 @@ import Container from '../components/Layout/Container'
 
 const NotFoundPage = () => {
   return (
-    <Layout>
+    <Layout fullFooter={false}>
       <Container>404 error</Container>
     </Layout>
   )

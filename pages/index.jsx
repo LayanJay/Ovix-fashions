@@ -10,6 +10,7 @@ const Home = ({ featured }) => {
     <Layout
       title="Oviz Fashions | Your Charming Beauty is Our Passion"
       inverted={true}
+      fullFooter={true}
     >
       <HeroSection />
       <BusinessFeatures />

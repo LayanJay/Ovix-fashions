@@ -3,7 +3,7 @@ import Container from '../components/Layout/Container'
 
 const DeliveryPage = () => {
   return (
-    <Layout title="Oviz Fashions | Delivery">
+    <Layout title="Oviz Fashions | Delivery" fullFooter={false}>
       <Container>Delivery</Container>
     </Layout>
   )

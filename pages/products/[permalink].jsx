@@ -1,13 +1,20 @@
 import commerce from '../../lib/commerce'
 import Product from '../../modules/SingleProductPage'
-
+import SmallFooter from '../../components/Layout/SmallFooter'
 import Layout from '../../components/Layout'
 const SingleProductPage = ({ product }) => {
   return (
     <>
-      <Layout title="Oviz Fashions | Single Product" inverted={false}>
+      <Layout
+        title="Oviz Fashions | Single Product"
+        inverted={false}
+        fullFooter={false}
+      >
         <Product product={product} />
       </Layout>
+
+      {/* <Product product={product} />
+      <SmallFooter></SmallFooter> */}
     </>
   )
 }
