@@ -1,8 +1,16 @@
-
 import commerce from '../../lib/commerce'
 import Product from '../../components/Product'
+import Footer from '../../components/Layout/Footer'
+import Navbar from '../../components/Layout/Navbar'
+import Layout from '../../components/Layout'
 const SingleProductPage = ({ product }) => {
-  return <Product product={product} />
+  return (
+    <>
+      <Layout title="Oviz Fashions | Single Product" inverted={false}>
+        <Product product={product} />
+      </Layout>
+    </>
+  )
 }
 
 export const getServerSideProps = async (context) => {

@@ -8,34 +8,56 @@ const Product = ({ product }) => {
     media: { source },
   } = product
   return (
-    <div className="flex pb-20 px-40 pt-32">
-      <div className="mr-8">
-        <Image src={source} alt="image" width="420" height="630" />
+    <div className="flex justify-center  my-32 mx-60 font-playFair">
+      <div className="rounded-t-full rounded-b-full overflow-hidden">
+        <img src={source} alt="image" width="360" height="540" />
       </div>
-      <div className="p-8">
-        <div className="font-bold text-xl">
+      <div className="px-16 py-8">
+        <div className="text-3xl tracking-wide text-brown-dark  font-semibold ">
           <h1>{name}</h1>
         </div>
 
         <div
-          className="py-4 text-sm text text-gray-800"
+          className="py-2 text-md text-textBlack"
           dangerouslySetInnerHTML={{ __html: description }}
         ></div>
-        <a href="#">Size Chart</a>
-        <div className="flex">
-          <button>S</button>
-          <button>M</button>
-          <button>L</button>
-          <button>XL</button>
+        <div className="text-brown-dark underline font-semibold py-1">
+          <a href="#">Size Chart</a>
         </div>
 
-        <button>-</button>
+        <div className="flex items-center">
+          <div className="flex my-4">
+            <button className="border-2 rounded-full mr-2 px-2 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite">
+              S
+            </button>
+            <button className="border-2 rounded-full mx-2 px-2 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite">
+              M
+            </button>
+            <button className="border-2 rounded-full mx-2 px-2 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite">
+              L
+            </button>
+            <button className="border-2 rounded-full mx-2 px-1 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite">
+              XL
+            </button>
+          </div>
 
-        <input type="text" name="" id="" />
-        <button>+</button>
+          <div className="mx-12">
+            <button>-</button>
+            <input type="text" name="" id="" />
+            <button>+</button>
+          </div>
+        </div>
 
-        <p>{price.formatted_with_symbol}</p>
-        <button>Add to bag</button>
+        <div className="flex items-end ">
+          <p className="text-md pb-2 font-semibold">
+            {price.formatted_with_symbol}
+          </p>
+          <div className="mx-4 ">
+            <button className="border-2 rounded-full px-4 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite">
+              Add to bag
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   )
