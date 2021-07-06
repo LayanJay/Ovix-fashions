@@ -21,6 +21,7 @@ const Product = ({ product }) => {
               layout="intrinsic"
               width={320}
               height={320}
+              quality={90}
             />
           </div>
         </a>
@@ -32,7 +33,7 @@ const Product = ({ product }) => {
           </h3>
         </a>
       </Link>
-      <p className="font-roboto text-center text-offWhite mb-4">
+      <p className="font-roboto text-center font-medium text-offWhite mb-4">
         {formatted_with_code}
       </p>
       <div className="flex justify-center items-center mb-3">
