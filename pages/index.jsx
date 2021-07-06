@@ -5,7 +5,10 @@ import MainCategories from '../modules/homepage/MainCategories'
 
 const Home = () => {
   return (
-    <Layout title="Oviz Fashions | Your Charming Beauty is Our Passion">
+    <Layout
+      title="Oviz Fashions | Your Charming Beauty is Our Passion"
+      inverted={true}
+    >
       <HeroSection />
       <BusinessFeatures />
       <MainCategories />
