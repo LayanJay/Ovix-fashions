@@ -1,6 +1,5 @@
 import Layout from '../components/Layout'
 import Container from '../components/Layout/Container'
-import Navbar from '../components/Layout/Navbar'
 
 const ShopMen = () => {
   return (
