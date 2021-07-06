@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@chec/commerce.js": "^2.7.1",
     "@fontsource/playfair-display": "^4.4.5",
     "@fontsource/roboto": "^4.4.5",
     "@tailwindcss/forms": "^0.3.3",
