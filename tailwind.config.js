@@ -9,6 +9,7 @@ module.exports = {
     extend: {
       colors: {
         brown: {
+          footer: '#361A05',
           dark: '#5A371C',
           semiDark: '#A77C5C',
           base: '#9A7C65',
