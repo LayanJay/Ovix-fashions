@@ -1,7 +1,6 @@
 import commerce from '../../lib/commerce'
 import Product from '../../modules/SingleProductPage'
-import Footer from '../../components/Layout/Footer'
-import Navbar from '../../components/Layout/Navbar'
+
 import Layout from '../../components/Layout'
 const SingleProductPage = ({ product }) => {
   return (
