@@ -7,6 +7,11 @@ const Product = ({ product }) => {
     price,
     media: { source },
   } = product
+
+  const handleAddToBag = () => {
+    //TODO: Add to bag functionality
+  }
+
   return (
     <div className="flex justify-center  my-32 mx-60 font-playFair">
       <div className="rounded-t-full rounded-b-full overflow-hidden">
@@ -53,7 +58,10 @@ const Product = ({ product }) => {
             {price.formatted_with_symbol}
           </p>
           <div className="mx-4 ">
-            <button className="border-2 rounded-full px-4 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite">
+            <button
+              className="border-2 rounded-full px-4 py-2 border-offBrown text-sm tracking-wide hover:bg-offBrown hover:text-offWhite"
+              onClick={handleAddToBag}
+            >
               Add to bag
             </button>
           </div>

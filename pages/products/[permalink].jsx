@@ -1,5 +1,5 @@
 import commerce from '../../lib/commerce'
-import Product from '../../components/Product'
+import Product from '../../modules/SingleProductPage'
 import Footer from '../../components/Layout/Footer'
 import Navbar from '../../components/Layout/Navbar'
 import Layout from '../../components/Layout'
