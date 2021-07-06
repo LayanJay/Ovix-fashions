@@ -1,5 +1,5 @@
 //TODOS: proper styling
-
+import Image from 'next/image'
 const Product = ({ product }) => {
   const {
     name,
@@ -10,7 +10,7 @@ const Product = ({ product }) => {
   return (
     <div className="flex pb-20 px-40 pt-32">
       <div className="mr-8">
-        <img src={source} alt="image" width="420" height="630" />
+        <Image src={source} alt="image" width="420" height="630" />
       </div>
       <div className="p-8">
         <div className="font-bold text-xl">

@@ -1,4 +1,4 @@
-import Image from 'next/image'
+
 import commerce from '../../lib/commerce'
 import Product from '../../components/Product'
 const SingleProductPage = ({ product }) => {
