@@ -15,7 +15,7 @@ const Product = ({ product }) => {
   return (
     <div className="flex justify-center  my-32 mx-60 font-playFair">
       <div className="rounded-t-full rounded-b-full overflow-hidden">
-        <img src={source} alt="image" width="360" height="540" />
+        <Image src={source} alt="image" width="360" height="540" />
       </div>
       <div className="px-16 py-8">
         <div className="text-3xl tracking-wide text-brown-dark  font-semibold ">
