@@ -1,8 +1,8 @@
 {
   "extends": "next",
   "rules": {
-    "no-eval": "warn",
-    "no-unused-vars": "warn",
-    "no-unused-expressions": "warn"
+    "no-eval": "error",
+    "no-unused-vars": "error",
+    "no-unused-expressions": "error"
   }
 }
