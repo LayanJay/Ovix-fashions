@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
+import SmallFooter from './SmallFooter'
 
-const Layout = ({ children, title, invertedNavbar, animateNavbarOnScroll }) => {
+const Layout = ({ children, title, invertedNavbar,fullFooter , animateNavbarOnScroll }) => {
+
   return (
     <>
       <Head>
@@ -14,7 +16,7 @@ const Layout = ({ children, title, invertedNavbar, animateNavbarOnScroll }) => {
           animateNavbarOnScroll={animateNavbarOnScroll}
         />
         {children}
-        <Footer />
+        {fullFooter ? <Footer /> : <SmallFooter />}
       </main>
     </>
   )

@@ -13,6 +13,7 @@ const Home = ({ featured, latest }) => {
     <Layout
       title="Oviz Fashions | Your Charming Beauty is Our Passion"
       invertedNavbar={true}
+      fullFooter={true}
       animateNavbarOnScroll={true}
     >
       <HeroSection />

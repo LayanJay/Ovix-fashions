@@ -3,7 +3,7 @@ import Container from '../components/Layout/Container'
 
 const ShopWomen = () => {
   return (
-    <Layout title="Oviz Fashions | Shop Women's">
+    <Layout title="Oviz Fashions | Shop Women's" fullFooter={false}>
       <Container>Women&apos;s page</Container>
     </Layout>
   )
