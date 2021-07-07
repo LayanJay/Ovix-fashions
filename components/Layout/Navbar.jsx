@@ -15,21 +15,23 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
   useEffect(() => {
     window.onscroll = () => {
       if (animateNavbarOnScroll) {
-        if (window.pageYOffset > 100 && !animated) {
+        if (window.pageYOffset > 10 && !animated) {
           gsap.to('nav', {
             height: 80,
             backgroundColor: '#fff',
             duration: 0.5,
-            ease: 'expo.inOut',
+            boxShadow: '0px 0px 18px 1px rgba(0 0 0 / 25%)',
+            ease: 'expo.out',
           })
 
           setInverted(false)
           animated = true
-        } else if (window.pageYOffset < 100 && animated) {
+        } else if (window.pageYOffset < 10 && animated) {
           gsap.to('nav', {
             height: 112,
             backgroundColor: 'transparent',
-            ease: 'expo.inOut',
+            ease: 'expo.out',
+            boxShadow: '0px 0px 0px 0px rgba(0 0 0 / 0%)',
             duration: 0.5,
           })
 
@@ -48,7 +50,7 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
       <div className=" ">
         <Link href="/">
           <a>
-            <div className="w-8">
+            <div className="w-8 pt-1">
               <Image
                 src={inverted ? ovizWhite : ovizBlack}
                 alt="navbar elements"
