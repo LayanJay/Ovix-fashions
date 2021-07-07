@@ -25,7 +25,7 @@ const Product = ({ product, dark }) => {
               layout="intrinsic"
               width={320}
               height={320}
-              quality={90}
+              quality={80}
             />
           </div>
         </a>
