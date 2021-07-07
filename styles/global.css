@@ -1,0 +1,34 @@
+.product-description h1,
+.product-description h2,
+.product-description h3,
+.product-description h4,
+.product-description h5,
+.product-description h6 {
+  @apply text-brown-dark font-bold font-roboto;
+}
+
+.product-description h1 {
+  @apply text-4xl;
+}
+.product-description h2 {
+  @apply text-3xl;
+}
+.product-description h3 {
+  @apply text-2xl;
+}
+.product-description h4 {
+  @apply text-xl;
+}
+
+.product-description p {
+  @apply text-textBlack text-lg text-opacity-75 leading-8 mb-5;
+}
+
+.product-description ul,
+.product-description ol {
+  @apply list-none;
+}
+
+.product-description ul li p {
+  @apply m-0 font-medium text-textBlack text-opacity-75;
+}

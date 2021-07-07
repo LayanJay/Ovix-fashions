@@ -43,7 +43,7 @@ const Home = ({ featured, latest }) => {
 
 export default Home
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const limit = 4
   const categorySlug = 'featured'
 
