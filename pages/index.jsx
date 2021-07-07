@@ -12,7 +12,8 @@ const Home = ({ featured, latest }) => {
   return (
     <Layout
       title="Oviz Fashions | Your Charming Beauty is Our Passion"
-      inverted={true}
+      invertedNavbar={true}
+      animateNavbarOnScroll={true}
     >
       <HeroSection />
       <BusinessFeatures />
