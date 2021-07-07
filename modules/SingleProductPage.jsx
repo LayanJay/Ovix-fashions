@@ -1,23 +1,81 @@
-//TODOS: proper styling
 import Image from 'next/image'
+import Link from 'next/link'
+import Container from '../components/Layout/Container'
+
 const Product = ({ product }) => {
+  console.log(product)
   const {
     name,
     description,
-    price,
-    media: { source },
+    price: { formatted_with_code },
+    assets: {
+      0: {
+        image_dimensions: { width, height },
+        url,
+      },
+    },
   } = product
 
-  const handleAddToBag = () => {
-    //TODO: Add to bag functionality
-  }
+  // const handleAddToBag = () => {
+  //   //TODO: Add to bag functionality
+  // }
 
   return (
-    <div className="flex justify-center  my-32 mx-60 font-playFair">
-      <div className="rounded-t-full rounded-b-full overflow-hidden">
-        <Image src={source} alt="image" width="360" height="540" />
-      </div>
-      <div className="px-16 py-8">
+    <Container>
+      <section className="grid grid-cols-1 grid-rows-1 md:grid-cols-2 py-10 sm:py-16 md:py-20 lg:py-24">
+        <div className="md:col-span-1 max-w-lg overflow-hidden">
+          <Image
+            className="rounded-full"
+            src={url}
+            alt="image"
+            width={width * 2}
+            height={height * 2}
+            layout="intrinsic"
+            quality={90}
+          />
+        </div>
+        <div className="md:col-span-1">
+          <h2>{name}</h2>
+          <div className="" dangerouslySetInnerHTML={{ __html: description }} />
+          <Link href="">
+            <a>Size chart</a>
+          </Link>
+          <div className="grid grid-rows-1 grid-cols-2 gap-4">
+            <div className="col-span-1 flex items-center space-x-3">
+              <button className="flex justify-center items-center border-2 rounded-full border-offBrown focus:bg-brown-dark focus:text-white hover:bg-brown-light transition ease-in uppercase w-10 h-14">
+                s
+              </button>
+              <button className="flex justify-center items-center border-2 rounded-full border-offBrown focus:bg-brown-dark focus:text-white hover:bg-brown-light transition ease-in uppercase w-10 h-14">
+                m
+              </button>
+              <button className="flex justify-center items-center border-2 rounded-full border-offBrown focus:bg-brown-dark focus:text-white hover:bg-brown-light transition ease-in uppercase w-10 h-14">
+                l
+              </button>
+              <button className="flex justify-center items-center border-2 rounded-full border-offBrown focus:bg-brown-dark focus:text-white hover:bg-brown-light transition ease-in uppercase w-10 h-14">
+                xl
+              </button>
+            </div>
+            <div className="col-span-1 flex items-center space-x-3">
+              <button className="flex justify-center items-center border-2 rounded-full border-offBrown hover:bg-brown-light transition ease-in uppercase w-10 h-14">
+                -
+              </button>
+              {/* TODO: add the onchange event */}
+              <input type="text" disabled value={0} />
+              <button className="flex justify-center items-center border-2 rounded-full border-offBrown hover:bg-brown-light transition ease-in uppercase w-10 h-14">
+                +
+              </button>
+            </div>
+          </div>
+          <div>
+            <p>{formatted_with_code}</p>
+            <button className="py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white transition ease-in">
+              Add to bag
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* <div className="px-16 py-8">
         <div className="text-3xl tracking-wide text-brown-dark  font-semibold ">
           <h1>{name}</h1>
         </div>
@@ -66,8 +124,8 @@ const Product = ({ product }) => {
             </button>
           </div>
         </div>
-      </div>
-    </div>
+      </div> */}
+    </Container>
   )
 }
 
