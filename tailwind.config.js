@@ -19,7 +19,8 @@ module.exports = {
         offGray: '#877A70',
         textGray: '#707070',
         textBlack: '#303030',
-        offWhite: '#E5E5E5'
+        offWhite: '#E5E5E5',
+        soldOut: '#FF5050'
       },
     },
   },

@@ -12,8 +12,9 @@ const Home = ({ featured, latest }) => {
   return (
     <Layout
       title="Oviz Fashions | Your Charming Beauty is Our Passion"
-      inverted={true}
+      invertedNavbar={true}
       fullFooter={true}
+      animateNavbarOnScroll={true}
     >
       <HeroSection />
       <BusinessFeatures />
@@ -44,7 +45,7 @@ const Home = ({ featured, latest }) => {
 
 export default Home
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const limit = 4
   const categorySlug = 'featured'
 

@@ -1,25 +1,22 @@
 import commerce from '../../lib/commerce'
-import Product from '../../modules/SingleProductPage'
+import SingleProduct from '../../modules/SingleProduct'
+import Container from '../../components/Layout/Container'
 import Layout from '../../components/Layout'
+
 const SingleProductPage = ({ product }) => {
   return (
-    <>
-      <Layout
-        title="Oviz Fashions | Single Product"
-        inverted={false}
-        fullFooter={false}
-      >
-        <Product product={product} />
-      </Layout>
-
-      {/* <Product product={product} />
-      <SmallFooter></SmallFooter> */}
-    </>
+    <Layout title={`${product.name} | Oviz Fashions`} inverted={false} fullFooter={false}>
+      <Container>
+        <SingleProduct product={product} />
+      </Container>
+    </Layout>
   )
 }
 
-export const getServerSideProps = async (context) => {
-  const { permalink } = context.query
+export default SingleProductPage
+
+export const getStaticProps = async ({ params }) => {
+  const { permalink } = params
   const product = await commerce.products.retrieve(permalink, {
     type: 'permalink',
   })
@@ -27,7 +24,20 @@ export const getServerSideProps = async (context) => {
     props: {
       product,
     },
+    // re-validate the site after each and every 4 hours
+    revalidate: 14400,
   }
 }
 
-export default SingleProductPage
+export async function getStaticPaths() {
+  const { data: products } = await commerce.products.list()
+
+  return {
+    paths: products.map((product) => ({
+      params: {
+        permalink: product.permalink,
+      },
+    })),
+    fallback: false,
+  }
+}
