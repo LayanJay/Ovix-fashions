@@ -7,32 +7,35 @@ import bagWhite from '../../public/assets/totebag-white.svg'
 import { useEffect, useState } from 'react'
 import gsap from 'gsap'
 
-const Navbar = ({ inverted }) => {
+const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
   let animated = false
 
-  const [inv, setInverted] = useState(inverted)
+  const [inverted, setInverted] = useState(invertedNavbar)
 
   useEffect(() => {
     window.onscroll = () => {
-      if (window.pageYOffset > 100 && !animated) {
-        gsap.to('nav', {
-          height: 80,
-          backgroundColor: '#fff',
-          duration: 0.5,
-          ease: 'expo.inOut',
-        })
-        setInverted(false)
+      if (animateNavbarOnScroll) {
+        if (window.pageYOffset > 100 && !animated) {
+          gsap.to('nav', {
+            height: 80,
+            backgroundColor: '#fff',
+            duration: 0.5,
+            ease: 'expo.inOut',
+          })
 
-        animated = true
-      } else if (window.pageYOffset < 100 && animated) {
-        gsap.to('nav', {
-          height: 112,
-          backgroundColor: 'transparent',
-          ease: 'expo.inOut',
-          duration: 0.5,
-        })
-        animated = false
-        setInverted(true)
+          setInverted(false)
+          animated = true
+        } else if (window.pageYOffset < 100 && animated) {
+          gsap.to('nav', {
+            height: 112,
+            backgroundColor: 'transparent',
+            ease: 'expo.inOut',
+            duration: 0.5,
+          })
+
+          animated = false
+          setInverted(true)
+        }
       }
     }
   }, [])
@@ -47,7 +50,7 @@ const Navbar = ({ inverted }) => {
           <a>
             <div className="w-8">
               <Image
-                src={inv ? ovizWhite : ovizBlack}
+                src={inverted ? ovizWhite : ovizBlack}
                 alt="navbar elements"
                 layout="intrinsic"
               />
@@ -61,7 +64,7 @@ const Navbar = ({ inverted }) => {
             <div className="">
               <div className="w-9">
                 <Image
-                  src={inv ? bagWhite : bagBlack}
+                  src={inverted ? bagWhite : bagBlack}
                   alt="navbar elements"
                   layout="intrinsic"
                 />
