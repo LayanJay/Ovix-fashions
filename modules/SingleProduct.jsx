@@ -49,7 +49,10 @@ const Product = ({ product }) => {
         [variant.groupId]: variant.id,
       }
 
-      commerce.cart.add(id, variantData).then(({ cart }) => setCart(cart))
+      commerce.cart
+        .add(id, 1, variantData)
+        .then(({ cart }) => setCart(cart))
+        .then(() => router.push('/bag'))
     }
   }
 
@@ -70,7 +73,7 @@ const Product = ({ product }) => {
             width={width * 2}
             height={height * 2}
             layout="intrinsic"
-            quality={90}
+            quality={85}
           />
         </div>
         <div className="md:col-span-1 flex flex-col justify-center">
