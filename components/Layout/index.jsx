@@ -3,8 +3,13 @@ import Navbar from './Navbar'
 import Footer from './Footer'
 import SmallFooter from './SmallFooter'
 
-const Layout = ({ children, title, invertedNavbar,fullFooter , animateNavbarOnScroll }) => {
-
+const Layout = ({
+  children,
+  title,
+  invertedNavbar,
+  fullFooter,
+  animateNavbarOnScroll,
+}) => {
   return (
     <>
       <Head>

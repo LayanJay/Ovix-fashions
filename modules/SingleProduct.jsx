@@ -68,14 +68,14 @@ const Product = ({ product }) => {
 
   return (
     <>
-      <section className="relative grid grid-cols-1 grid-rows-1 md:grid-cols-2 gap-6 place-items-center py-20 lg:py-24">
+      <section className="relative grid grid-cols-1 grid-rows-1 md:grid-cols-2 gap-6 place-items-center py-20 min-h-screen">
         <div
-          className="absolute z-10 left-0 top-20 md:top-32 p-1 md:p-2 border-2 border-brown-dark hover:bg-brown-dark hover:text-white transition ease-in rounded-full cursor-pointer"
+          className="absolute z-10 left-0 top-24 md:top-32 p-1 md:p-2 border-2 border-brown-dark hover:bg-brown-dark hover:text-white transition ease-in rounded-full cursor-pointer"
           onClick={() => router.back()}
         >
           <MdKeyboardBackspace className="h-8 w-8" />
         </div>
-        <div className="md:col-span-1 max-w-lg rounded-full overflow-hidden">
+        <div className="md:col-span-1 max-w-md md:max-w-lg rounded-full overflow-hidden">
           <Image
             className="rounded-full transform hover:scale-105 transition ease-in"
             src={url}

@@ -3,7 +3,7 @@ import Container from '../components/Layout/Container'
 
 const CheckoutPage = () => {
   return (
-    <Layout title="Oviz Fashions | Ckeckout" fullFooter={false}>
+    <Layout title="Oviz Fashions | Shopping Bag" fullFooter={false}>
       <Container>checkout</Container>
     </Layout>
   )
