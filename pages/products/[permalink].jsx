@@ -5,7 +5,11 @@ import Layout from '../../components/Layout'
 
 const SingleProductPage = ({ product }) => {
   return (
-    <Layout title={`${product.name} | Oviz Fashions`} inverted={false} fullFooter={false}>
+    <Layout
+      title={`${product.name} | Oviz Fashions`}
+      inverted={false}
+      fullFooter={false}
+    >
       <Container>
         <SingleProduct product={product} />
       </Container>

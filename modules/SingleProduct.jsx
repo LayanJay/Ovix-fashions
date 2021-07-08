@@ -53,16 +53,17 @@ const Product = ({ product }) => {
   }
 
   const handleAddToBag = () => {
-    if (variant.name === '' && variant.id === '')
+    if (variant.name === '' && variant.id === '') {
       alert('You forgot to choose the item size!')
+    } else {
+      const variantData = {
+        [variant.groupId]: variant.id,
+      }
 
-    const variantData = {
-      [variant.groupId]: variant.id,
+      commerce.cart
+        .add(id, quantity, variantData)
+        .then(({ cart }) => setCart(cart))
     }
-
-    commerce.cart
-      .add(id, quantity, variantData)
-      .then(({ cart }) => setCart(cart))
   }
 
   return (
