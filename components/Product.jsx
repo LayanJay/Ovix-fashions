@@ -2,7 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Product = ({ product, dark }) => {
-  console.log(product)
+  //console.log(product)
   const {
     media: { source },
     name,
