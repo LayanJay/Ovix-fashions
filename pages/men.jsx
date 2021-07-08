@@ -62,7 +62,7 @@ const ShopMen = ({ categories, allProducts }) => {
 
 export default ShopMen
 
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const categorySlug = 'men'
 
   const { data } = await Commerce.categories.list()
