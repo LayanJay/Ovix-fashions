@@ -29,7 +29,7 @@ const ShopWomen = ({ categories, allProducts }) => {
       <Container>
         <div className="pt-24 pb-12 font-playFair">
           <div className="pb-4 text-3xl text-brown-dark font-semibold">
-            <h1>Shop Women's</h1>
+            <h1>Shop Women&apos;s</h1>
           </div>
           <div className="flex space-x-3 text-sm">
             <div
