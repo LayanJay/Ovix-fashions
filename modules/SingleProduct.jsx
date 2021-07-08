@@ -74,9 +74,9 @@ const Product = ({ product }) => {
           />
         </div>
         <div className="md:col-span-1 flex flex-col justify-center">
-          <h2 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl text-brown-dark capitalize leading-8 mb-8 select-none">
+          <h1 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl text-brown-dark capitalize leading-8 mb-8 select-none">
             {name}
-          </h2>
+          </h1>
           <div
             className="product-description select-none"
             dangerouslySetInnerHTML={{ __html: description }}
@@ -89,7 +89,7 @@ const Product = ({ product }) => {
           </div>
 
           <div className="flex items-center space-x-1 sm:space-x-2 mr-4 md:mr-6 mb-5">
-            {variant_groups[0].options.map(({ id, name }) => (
+            {variant_groups[0].options?.map(({ id, name }) => (
               <button
                 key={id}
                 className={`flex justify-center items-center border-2 rounded-full font-medium ${
