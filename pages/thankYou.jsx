@@ -1,12 +1,16 @@
 import Layout from '../components/Layout'
-import Container from '../components/Layout/Container'
+// import Container from '../components/Layout/Container'
+import Message from '../modules/thankyoupage/Message'
+import Button from '../modules/thankyoupage/Button'
 
 const ThankYouPage = () => {
   return (
     <Layout title="Oviz Fashions | Thank You" fullFooter={false}>
-      <Container>ThankYou</Container>
+      <Message/>
+      <Button/>
     </Layout>
   )
 }
 
 export default ThankYouPage
+
