@@ -53,7 +53,7 @@ const LineItem = ({ item }) => {
 
   return (
     <>
-      <div className="grid grid-rows-1 grid-cols-3 md:grid-cols-8 gap-4 place-items-center">
+      <div className="grid grid-rows-1 grid-cols-3 md:grid-cols-8 gap-4">
         <Link href={`/products/${permalink}`}>
           <a>
             <div className="col-span-1 flex items-center justify-center overflow-hidden">
@@ -73,7 +73,7 @@ const LineItem = ({ item }) => {
           <div className="col-span-2 md:col-span-3 flex flex-col justify-center">
             <Link href={`/products/${permalink}`}>
               <a className="text-brown-dark hover:text-brown-semiDark transition ease-in">
-                <h3 className="font-playFair font-bold text-lg md:text-2xl">
+                <h3 className="font-playFair font-bold text-lg md:text-2xl max-w-md">
                   {name}
                 </h3>
               </a>
