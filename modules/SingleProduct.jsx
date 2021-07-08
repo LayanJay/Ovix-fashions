@@ -89,7 +89,7 @@ const Product = ({ product }) => {
           </div>
 
           <div className="flex items-center space-x-1 sm:space-x-2 mr-4 md:mr-6 mb-5">
-            {variant_groups[0].options?.map(({ id, name }) => (
+            {variant_groups[0]?.options?.map(({ id, name }) => (
               <button
                 key={id}
                 className={`flex justify-center items-center border-2 rounded-full font-medium ${
