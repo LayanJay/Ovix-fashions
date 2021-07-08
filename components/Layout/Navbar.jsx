@@ -61,7 +61,7 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
         </Link>
       </div>
       <div className="relative">
-        <Link href="/checkout">
+        <Link href="/bag">
           <a>
             <div className="">
               <div className="w-9">

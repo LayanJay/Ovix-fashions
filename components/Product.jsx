@@ -2,7 +2,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 const Product = ({ product, dark }) => {
-  //console.log(product)
   const {
     media: { source },
     name,
@@ -52,7 +51,7 @@ const Product = ({ product, dark }) => {
                 dark ? `hover:bg-brown-semiDark` : `hover:bg-brown-dark`
               } transition ease-in`}
             >
-              Add to bag
+              View Item
             </p>
           </a>
         </Link>
