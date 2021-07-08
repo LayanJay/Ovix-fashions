@@ -35,7 +35,6 @@ export const CartProvider = ({ children }) => {
     try {
       const cart = await commerce.cart.retrieve()
       setCart(cart)
-      dispatch(type)
     } catch (error) {
       //   display some toasts to let users know what's wrong
       console.log(error)
