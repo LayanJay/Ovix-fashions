@@ -3,12 +3,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useCartDispatch } from '../context/cart'
-import { HiPlus, HiMinusSm } from 'react-icons/hi'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import commerce from '../lib/commerce'
 
 const Product = ({ product }) => {
-  const [quantity, setQuantity] = useState(1)
   const [variant, setVariant] = useState({
     groupId: '',
     id: '',
@@ -23,7 +21,6 @@ const Product = ({ product }) => {
     id,
     name,
     description,
-    inventory: { available },
     is: { sold_out },
     price: { formatted_with_code },
     assets: {
@@ -34,14 +31,6 @@ const Product = ({ product }) => {
     },
     variant_groups,
   } = product
-
-  const increaseQuantity = () => {
-    if (quantity < available) setQuantity((prev) => prev + 1)
-  }
-
-  const decreaseQuantity = () => {
-    if (quantity > 1) setQuantity((prev) => prev - 1)
-  }
 
   const setSize = (id, name) => {
     setVariant({
@@ -61,8 +50,9 @@ const Product = ({ product }) => {
       }
 
       commerce.cart
-        .add(id, quantity, variantData)
+        .add(id, 1, variantData)
         .then(({ cart }) => setCart(cart))
+        .then(() => router.push('/bag'))
     }
   }
 
@@ -83,13 +73,13 @@ const Product = ({ product }) => {
             width={width * 2}
             height={height * 2}
             layout="intrinsic"
-            quality={90}
+            quality={85}
           />
         </div>
         <div className="md:col-span-1 flex flex-col justify-center">
-          <h2 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl text-brown-dark capitalize leading-8 mb-8 select-none">
+          <h1 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl text-brown-dark capitalize leading-8 mb-8 select-none">
             {name}
-          </h2>
+          </h1>
           <div
             className="product-description select-none"
             dangerouslySetInnerHTML={{ __html: description }}
@@ -101,38 +91,18 @@ const Product = ({ product }) => {
             </Link>
           </div>
 
-          <div className="flex items-center justify-start flex-wrap">
-            <div className="flex items-center space-x-1 sm:space-x-2 mr-4 md:mr-6 mb-5">
-              {variant_groups[0].options.map(({ id, name }) => (
-                <button
-                  key={id}
-                  className={`flex justify-center items-center border-2 rounded-full font-medium ${
-                    variant.name === name ? `bg-brown-dark text-white` : ``
-                  } focus:bg-brown-dark border-brown-dark hover:bg-brown-semiDark hover:text-white transition ease-in uppercase w-10 h-14`}
-                  onClick={() => setSize(id, name)}
-                >
-                  {name}
-                </button>
-              ))}
-            </div>
-            <div className="flex items-center space-x-1 sm:space-x-2 mb-5">
+          <div className="flex items-center space-x-1 sm:space-x-2 mr-4 md:mr-6 mb-5">
+            {variant_groups[0]?.options?.map(({ id, name }) => (
               <button
-                className="flex justify-center items-center border-2 rounded-full font-medium border-brown-dark hover:bg-brown-semiDark hover:text-white transition ease-in uppercase w-10 h-14"
-                onClick={decreaseQuantity}
+                key={id}
+                className={`flex justify-center items-center border-2 rounded-full font-medium ${
+                  variant.name === name ? `bg-brown-dark text-white` : ``
+                } focus:bg-brown-dark border-brown-dark hover:bg-brown-semiDark hover:text-white transition ease-in uppercase w-10 h-14`}
+                onClick={() => setSize(id, name)}
               >
-                <HiMinusSm className="text-xl" />
+                {name}
               </button>
-              {/* TODO: add the onchange event */}
-              <div className="flex items-center justify-center border-2 rounded-lg font-medium border-brown-dark w-14 md:w-20 h-14 select-none">
-                <p>{quantity}</p>
-              </div>
-              <button
-                className="flex justify-center items-center border-2 rounded-full font-medium border-brown-dark hover:bg-brown-semiDark hover:text-white transition ease-in uppercase w-10 h-14"
-                onClick={increaseQuantity}
-              >
-                <HiPlus className="text-xl" />
-              </button>
-            </div>
+            ))}
           </div>
           <div className="flex items-center space-x-3 md:space-x-5">
             <p className="font-medium text-xl hover:underline transition ease-in select-none">

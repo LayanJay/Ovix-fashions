@@ -40,7 +40,7 @@ const Product = ({ product, dark }) => {
           </h3>
         </a>
       </Link>
-      <p className="font-roboto text-center font-medium text-offWhite mb-4">
+      <p className="font-roboto text-center font-semibold text-white mb-4">
         {formatted_with_code}
       </p>
       <div className="flex justify-center items-center mb-3">
