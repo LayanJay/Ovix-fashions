@@ -77,5 +77,7 @@ export const getStaticProps = async () => {
       categories,
       allProducts: allProducts.reverse(),
     },
+    // re-validate the site after each and every 4 hours
+    revalidate: 14400,
   }
 }

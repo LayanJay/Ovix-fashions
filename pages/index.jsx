@@ -65,5 +65,7 @@ export const getStaticProps = async () => {
       featured,
       latest: latest.reverse(),
     },
+    // re-validate the site after each and every 4 hours
+    revalidate: 14400,
   }
 }
