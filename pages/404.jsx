@@ -6,8 +6,11 @@ import Button from '../modules/404page/Button'
 const NotFoundPage = () => {
   return (
     <Layout fullFooter={false}>
-      <Message/>
-      <Button/>
+      <div className="flex justify-center"><Message/></div>
+      <div className="flex justify-center py-44"><Button/></div>
+      
+      
+      
     </Layout>
   )
 }

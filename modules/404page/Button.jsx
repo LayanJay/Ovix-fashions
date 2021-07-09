@@ -4,13 +4,13 @@ const Button = () => {
     return (
         <>
         <section>
-        <div>
+        
             <Link href='/'>
                 <a>
-                <button>Go Back</button>
+                <button className="font-semibold text-sm text-brown-semiDark font-roboto rounded-full cursor-pointer border-brown-semiDark border-2 hover:text-offBrown hover:bg-gray-300 p-1">Go Back</button>
                 </a>
             </Link>
-        </div>
+        
                          
     </section>
     </>
