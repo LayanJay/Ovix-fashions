@@ -15,7 +15,6 @@ const MainCategories = () => {
       scrollTrigger: {
         trigger: '#men',
         start: 'top 65%',
-        markers: true,
       },
     })
 
@@ -23,7 +22,6 @@ const MainCategories = () => {
       scrollTrigger: {
         trigger: '#women',
         start: 'top 65%',
-        markers: true,
       },
     })
 
@@ -38,7 +36,7 @@ const MainCategories = () => {
         '#menText',
         {
           duration: 1,
-          y: 50,
+          y: 40,
           opacity: 0,
           ease: 'power3.out',
         },
@@ -56,7 +54,7 @@ const MainCategories = () => {
         '#womenText',
         {
           duration: 1,
-          y: 50,
+          y: 40,
           opacity: 0,
           ease: 'power3.out',
         },
