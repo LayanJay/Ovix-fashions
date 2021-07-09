@@ -1,10 +1,10 @@
-import Container from '../../components/Layout/Container'
+// import Container from '../../components/Layout/Container'
 
 const Message = () => {
     return (
         <>
         <section>
-        <Container>
+        
             <section>
                 <div>
                     <h1>Congratulations</h1>
@@ -21,7 +21,7 @@ const Message = () => {
                     </h4>
                 </div>
             </section>
-        </Container>
+        
     </section>
     </>
     )
