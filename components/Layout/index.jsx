@@ -15,7 +15,14 @@ const Layout = ({
 }) => {
   // to remove the initial flashing
   useEffect(() => {
-    gsap.to('#app', { visibility: 'visible' })
+    gsap.to('#layoutApp', { visibility: 'visible' })
+
+    gsap.from('#layoutChildren', {
+      duration: 0.3,
+      delay: 0.2,
+      opacity: 0,
+      ease: 'power1.out',
+    })
   }, [])
   return (
     <>
@@ -36,12 +43,12 @@ const Layout = ({
           content={`${image || `/assets/favicon.png`}`}
         />
       </Head>
-      <main id="app" className="text-textBlack invisible font-roboto">
+      <main id="layoutApp" className="text-textBlack invisible font-roboto">
         <Navbar
           invertedNavbar={invertedNavbar}
           animateNavbarOnScroll={animateNavbarOnScroll}
         />
-        {children}
+        <section id="layoutChildren">{children}</section>
         {fullFooter ? <Footer /> : <SmallFooter />}
       </main>
     </>

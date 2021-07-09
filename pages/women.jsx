@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { gsap } from 'gsap'
 import Commerce from '../lib/commerce'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
@@ -7,6 +8,25 @@ import Product from '../components/Product'
 import { MdKeyboardBackspace } from 'react-icons/md'
 
 const ShopWomen = ({ categories, allProducts }) => {
+  useEffect(() => {
+    const tl = gsap.timeline()
+
+    tl.from('#womenCategories div', {
+      delay: 0.4,
+      duration: 0.3,
+      stagger: 0.05,
+      opacity: 0,
+      ease: 'power1.in',
+    }).from('#womenProducts div', {
+      delay: 0.1,
+      stagger: 0.05,
+      opacity: 0,
+      y: 5,
+      ease: 'power1.in',
+      duration: 0.3,
+    })
+  }, [])
+
   const [products, setProducts] = useState(allProducts)
 
   const router = useRouter()
@@ -42,7 +62,10 @@ const ShopWomen = ({ categories, allProducts }) => {
               Shop Women&apos;s
             </h1>
           </div>
-          <div className="grid grid-cols-2 md:flex md:space-x-3 md:gap-0 gap-3 text-sm sm:text-base">
+          <div
+            id="womenCategories"
+            className="grid grid-cols-2 md:flex md:space-x-3 md:gap-0 gap-3 text-sm sm:text-base"
+          >
             <div
               className="flex items-center justify-center py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in"
               onClick={() => handleFilterProducts(null)}
@@ -60,7 +83,10 @@ const ShopWomen = ({ categories, allProducts }) => {
               </div>
             ))}
           </div>
-          <div className="pt-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+          <div
+            id="womenProducts"
+            className="pt-10 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6"
+          >
             {products.map((product) => (
               <Product key={product.id} product={product} dark={false} />
             ))}
