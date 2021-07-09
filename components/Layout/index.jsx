@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Navbar from './Navbar'
 import Footer from './Footer'
 import SmallFooter from './SmallFooter'
+import { gsap } from 'gsap'
+import { useEffect } from 'react'
 
 const Layout = ({
   children,
@@ -11,6 +13,10 @@ const Layout = ({
   fullFooter,
   animateNavbarOnScroll,
 }) => {
+  // to remove the initial flashing
+  useEffect(() => {
+    gsap.to('#app', { visibility: 'visible' })
+  }, [])
   return (
     <>
       <Head>
@@ -30,7 +36,7 @@ const Layout = ({
           content={`${image || `/assets/favicon.png`}`}
         />
       </Head>
-      <main className="text-textBlack font-roboto">
+      <main id="app" className="text-textBlack invisible font-roboto">
         <Navbar
           invertedNavbar={invertedNavbar}
           animateNavbarOnScroll={animateNavbarOnScroll}
