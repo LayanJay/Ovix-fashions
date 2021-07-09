@@ -86,7 +86,7 @@ const Product = ({ product }) => {
           />
           {/* TODO: link the size chart pdf */}
           <div className="mt-4 mb-5 font-medium text-lg text-brown-dark">
-            <Link href="">
+            <Link href="#">
               <a className="hover:underline">Size chart</a>
             </Link>
           </div>
