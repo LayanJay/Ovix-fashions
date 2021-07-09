@@ -6,9 +6,12 @@ const Button = () => {
         <section>
         <div>
             <Link href='/'>
+                <a>
                 <button>Go Back</button>
+                </a>
             </Link>
         </div>
+                         
     </section>
     </>
     )

@@ -6,8 +6,12 @@ const Button = () => {
         <>
         <section>
            
-                <Link href='/'>
-                    <button>Continue Shopping</button>
+                <Link href='/'><a>
+                <div className="font-semibold text-sm text-brown-semiDark font-roboto rounded-full cursor-pointer border-brown-semiDark border-2 hover:text-offBrown hover:bg-gray-300">
+                    <button className="p-1">Continue Shopping</button>
+                    </div>
+                </a>
+                    
                 </Link>
        </section>
         </>
