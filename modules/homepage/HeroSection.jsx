@@ -3,10 +3,7 @@ import Container from '../../components/Layout/Container'
 import heroImage from '../../public/samples/hero-image.png'
 import mouse from '../../public/samples/mouse.png'
 import { gsap } from 'gsap'
-import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import { useEffect } from 'react'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const HeroSection = () => {
   useEffect(() => {
