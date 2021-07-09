@@ -6,6 +6,7 @@ import SmallFooter from './SmallFooter'
 const Layout = ({
   children,
   title,
+  image,
   invertedNavbar,
   fullFooter,
   animateNavbarOnScroll,
@@ -14,6 +15,20 @@ const Layout = ({
     <>
       <Head>
         <title>{title}</title>
+        <meta name="description" content="" />
+        <meta name="image" content={`${image || `/assets/favicon.png`}`} />
+        <meta property="og:title" content={`${title || `Oviz Fashions`}`} />
+        <meta property="og:description" content="" />
+        <meta
+          property="og:image"
+          content={`${image || `/assets/favicon.png`}`}
+        />
+        <meta name="twitter:title" content={`${title || `Oviz Fashions`}`} />
+        <meta name="twitter:description" content="" />
+        <meta
+          name="twitter:image"
+          content={`${image || `/assets/favicon.png`}`}
+        />
       </Head>
       <main className="text-textBlack font-roboto">
         <Navbar

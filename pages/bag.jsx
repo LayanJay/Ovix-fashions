@@ -104,17 +104,17 @@ const CheckoutPage = () => {
             <p className="font-medium text-brown-dark text-xl sm:text-2xl md:text-3xl mb-4 select-none">
               {subtotal.formatted_with_code}
             </p>
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-2 md:space-x-3">
               <button
                 className="py-2 px-5 border-2 border-brown-semiDark hover:border-brown-dark hover:bg-brown-dark hover:text-white rounded-full text-brown-semiDark transition ease-in"
                 onClick={() => router.back()}
               >
-                Back to Shopping
+                Back
               </button>
-              <button className="py-2 px-5 border-2 hover:border-brown-semiDark border-brown-dark hover:bg-brown-semiDark hover:text-white rounded-full text-brown-dark transition ease-in">
+              <button className="py-2 px-4 border-2 hover:border-brown-semiDark border-brown-dark hover:bg-brown-semiDark hover:text-white rounded-full text-brown-dark transition ease-in">
                 Checkout
               </button>
-              <button className="border-2 border-textGray text-textBlack hover:bg-textGray hover:text-white transition ease-in rounded-full py-2 px-6">
+              <button className="border-2 border-textGray text-textBlack hover:bg-textGray hover:text-white transition ease-in rounded-full py-2 px-5">
                 Clear
               </button>
             </div>

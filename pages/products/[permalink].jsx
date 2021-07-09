@@ -7,6 +7,7 @@ const SingleProductPage = ({ product }) => {
   return (
     <Layout
       title={`${product.name} | Oviz Fashions`}
+      image={product.media.source}
       inverted={false}
       fullFooter={false}
     >
