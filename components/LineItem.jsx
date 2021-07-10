@@ -26,7 +26,7 @@ const LineItem = ({ item }) => {
   const handleUpdateCart = ({ cart }) => setCart(cart)
 
   const increaseQuantity = () => {
-    if (quantity < inventory) {
+    if (quantity < inventory && showQuantity < inventory) {
       setShowQuantity((prev) => prev + 1)
       commerce.cart
         .update(id, { quantity: quantity + 1 })
@@ -35,7 +35,7 @@ const LineItem = ({ item }) => {
   }
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
+    if (quantity > 1 && showQuantity > 1) {
       setShowQuantity((prev) => prev - 1)
       commerce.cart
         .update(id, { quantity: quantity - 1 })
@@ -53,7 +53,10 @@ const LineItem = ({ item }) => {
 
   return (
     <>
-      <div className="grid grid-rows-1 grid-cols-3 md:grid-cols-8 gap-4">
+      <div
+        id="lineItem"
+        className="grid grid-rows-1 grid-cols-3 md:grid-cols-8 gap-4"
+      >
         <Link href={`/products/${permalink}`}>
           <a>
             <div className="col-span-1 flex items-center justify-center overflow-hidden">

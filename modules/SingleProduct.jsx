@@ -1,17 +1,47 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { gsap } from 'gsap'
 import { useCartDispatch } from '../context/cart'
 import { MdKeyboardBackspace } from 'react-icons/md'
+import { AiOutlineLoading } from 'react-icons/ai'
 import commerce from '../lib/commerce'
 
 const Product = ({ product }) => {
+  useEffect(() => {
+    const tl = gsap.timeline()
+
+    tl.to('#brownBox', {
+      duration: 1.6,
+      delay: 0.5,
+      width: 0,
+      ease: 'expo.out',
+    })
+      .from(
+        '#productText h1',
+        { duration: 1, opacity: 0, y: 30, ease: 'power4.out' },
+        1.4
+      )
+      .from(
+        '#productText div',
+        { duration: 1, opacity: 0, y: 30, stagger: 0.1, ease: 'power4.out' },
+        1.5
+      )
+  }, [])
+
+  const [isAdded, setIsAdded] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const [variant, setVariant] = useState({
     groupId: '',
     id: '',
     name: '',
   })
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsAdded(null), 4000)
+    return () => clearTimeout(timer)
+  }, [isAdded])
 
   const router = useRouter()
 
@@ -49,12 +79,18 @@ const Product = ({ product }) => {
         [variant.groupId]: variant.id,
       }
 
+      setIsLoading(true)
+
       commerce.cart
         .add(id, 1, variantData)
         .then(({ cart }) => setCart(cart))
-        .then(() => router.push('/bag'))
+        .then(() => setIsAdded(true))
     }
   }
+
+  useEffect(() => {
+    if (isAdded === true) setIsLoading(false)
+  }, [isAdded])
 
   return (
     <>
@@ -65,7 +101,7 @@ const Product = ({ product }) => {
         >
           <MdKeyboardBackspace className="h-8 w-8" />
         </div>
-        <div className="md:col-span-1 max-w-md md:max-w-lg rounded-full overflow-hidden">
+        <div className="relative md:col-span-1 max-w-md md:max-w-lg rounded-full overflow-hidden">
           <Image
             className="rounded-full transform hover:scale-105 transition ease-in"
             src={url}
@@ -75,8 +111,15 @@ const Product = ({ product }) => {
             layout="intrinsic"
             quality={85}
           />
+          <div
+            id="brownBox"
+            className="absolute top-0 right-0 w-full h-full bg-brown-base"
+          />
         </div>
-        <div className="md:col-span-1 flex flex-col justify-center">
+        <div
+          id="productText"
+          className="md:col-span-1 flex flex-col justify-center"
+        >
           <h1 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl text-brown-dark capitalize leading-8 mb-8 select-none">
             {name}
           </h1>
@@ -109,10 +152,11 @@ const Product = ({ product }) => {
               {formatted_with_code}
             </p>
             <button
-              className="py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in"
+              className="flex space-x-2 items-center py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in"
               onClick={handleAddToBag}
             >
-              Add to bag
+              <span>Add to bag</span>
+              {isLoading ? <AiOutlineLoading className="animate-spin" /> : ''}
             </button>
             {sold_out ? (
               <p className="font-semibold text-lg text-soldOut select-none">
@@ -123,6 +167,16 @@ const Product = ({ product }) => {
             )}
           </div>
         </div>
+        {isAdded ? (
+          <div
+            id="addCart"
+            className="fixed right-4 top-24 bg-brown-light border-2 border-brown-dark text-brown-dark font-medium text-lg sm:text-xl text-center max-w-sm rounded-lg shadow-lg py-5 px-8 overflow-hidden"
+          >
+            Added to the cart
+          </div>
+        ) : (
+          ''
+        )}
       </section>
     </>
   )
