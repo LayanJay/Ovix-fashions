@@ -5,10 +5,12 @@ import commerce from '../lib/commerce'
 import { useCartDispatch } from '../context/cart'
 import { HiPlus, HiMinusSm } from 'react-icons/hi'
 import { RiCloseLine } from 'react-icons/ri'
+import { AiOutlineLoading } from 'react-icons/ai'
 import line from '../public/patterns/line.svg'
 
 const LineItem = ({ item }) => {
   const [showQuantity, setShowQuantity] = useState(1)
+  const [isDisable, setIsDisable] = useState(false)
   const {
     id,
     name,
@@ -23,10 +25,14 @@ const LineItem = ({ item }) => {
 
   const { setCart } = useCartDispatch()
 
-  const handleUpdateCart = ({ cart }) => setCart(cart)
+  const handleUpdateCart = ({ cart }) => {
+    setCart(cart)
+    setIsDisable(false)
+  }
 
   const increaseQuantity = () => {
     if (quantity < inventory && showQuantity < inventory) {
+      setIsDisable(true)
       setShowQuantity((prev) => prev + 1)
       commerce.cart
         .update(id, { quantity: quantity + 1 })
@@ -36,6 +42,7 @@ const LineItem = ({ item }) => {
 
   const decreaseQuantity = () => {
     if (quantity > 1 && showQuantity > 1) {
+      setIsDisable(true)
       setShowQuantity((prev) => prev - 1)
       commerce.cart
         .update(id, { quantity: quantity - 1 })
@@ -43,7 +50,10 @@ const LineItem = ({ item }) => {
     }
   }
 
-  const romoveItem = () => commerce.cart.remove(id).then(handleUpdateCart)
+  const romoveItem = () => {
+    setIsDisable(true)
+    commerce.cart.remove(id).then(handleUpdateCart)
+  }
 
   // igonre the dependency array
   useEffect(() => {
@@ -67,6 +77,7 @@ const LineItem = ({ item }) => {
                 layout="intrinsic"
                 width={152}
                 height={217}
+                quality={65}
               />
             </div>
           </a>
@@ -104,7 +115,10 @@ const LineItem = ({ item }) => {
             </div>
             <div className="col-span-1 flex items-center space-x-1 my-4">
               <button
-                className="flex items-center justify-center border-2 border-brown-semiDark w-8 h-10 rounded-full hover:bg-brown-semiDark transition ease-in group"
+                className={`flex items-center justify-center border-2 border-brown-semiDark w-8 h-10 rounded-full hover:bg-brown-semiDark transition ease-in group ${
+                  isDisable ? 'cursor-wait' : ''
+                }`}
+                disabled={isDisable}
                 onClick={decreaseQuantity}
               >
                 <HiMinusSm className="text-brown-dark group-hover:text-white transition ease-in h-5 w-5" />
@@ -113,7 +127,10 @@ const LineItem = ({ item }) => {
                 <p className="text-brown-dark">{showQuantity}</p>
               </div>
               <button
-                className="flex items-center justify-center border-2 border-brown-semiDark w-8 h-10 rounded-full hover:bg-brown-semiDark transition ease-in group"
+                className={`flex items-center justify-center border-2 border-brown-semiDark w-8 h-10 rounded-full hover:bg-brown-semiDark transition ease-in group ${
+                  isDisable ? 'cursor-wait' : ''
+                }`}
+                disabled={isDisable}
                 onClick={increaseQuantity}
               >
                 <HiPlus className="text-brown-dark group-hover:text-white transition ease-in h-5 w-5" />
@@ -122,13 +139,21 @@ const LineItem = ({ item }) => {
           </div>
           <div className="col-span-2 md:col-span-1 flex items-center md:justify-center mb-4 md:mb-0">
             <button
-              className="md:flex items-center justify-center group h-10 w-10 border-2 border-textGray hover:bg-textGray transition ease-in rounded-full hidden"
+              className={`md:flex items-center justify-center group h-10 w-10 border-2 border-textGray hover:bg-textGray transition ease-in rounded-full hidden ${
+                isDisable ? `cursor-wait` : ''
+              }`}
+              disabled={isDisable}
               onClick={romoveItem}
             >
-              <RiCloseLine className="h-5 w-5 text-textGray group-hover:text-white transition ease-in" />
+              {isDisable ? (
+                <AiOutlineLoading className="animate-spin h-5 w-5 text-textGray group-hover:text-white transition ease-in" />
+              ) : (
+                <RiCloseLine className="h-5 w-5 text-textGray group-hover:text-white transition ease-in" />
+              )}
             </button>
             <button
               className="md:hidden border-2 border-textGray text-textBlack hover:bg-textGray hover:text-white transition ease-in rounded-full block py-1 px-3"
+              disabled={isDisable}
               onClick={romoveItem}
             >
               Remove

@@ -1,16 +1,32 @@
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import commerce from '../lib/commerce'
 import Layout from '../components/Layout'
 import Container from '../components/Layout/Container'
 import LineItem from '../components/LineItem'
-import { useCartState } from '../context/cart'
+import { useCartState, useCartDispatch } from '../context/cart'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import { HiOutlineShoppingBag } from 'react-icons/hi'
 import line from '../public/patterns/line.svg'
+import { AiOutlineLoading } from 'react-icons/ai'
 
 const CheckoutPage = () => {
+  const [isLoading, setIsLoading] = useState(false)
   const { line_items, subtotal } = useCartState()
+  const { setCart } = useCartDispatch()
+
+  const handleSetEmptyCart = ({ cart }) => {
+    setCart(cart)
+    setIsLoading(false)
+  }
+
   const router = useRouter()
+
+  const handleClearCart = () => {
+    setIsLoading(true)
+    commerce.cart.empty().then((json) => handleSetEmptyCart(json))
+  }
 
   if (line_items.length === 0) {
     return (
@@ -105,11 +121,27 @@ const CheckoutPage = () => {
                 >
                   Back
                 </button>
-                <button className="py-2 px-4 border-2 hover:border-brown-semiDark border-brown-dark hover:bg-brown-semiDark hover:text-white rounded-full text-brown-dark transition ease-in">
+                <button
+                  className={`py-2 px-4 border-2 hover:border-brown-semiDark border-brown-dark hover:bg-brown-semiDark hover:text-white rounded-full text-brown-dark transition ease-in ${
+                    isLoading ? `cursor-wait` : ''
+                  }`}
+                  disabled={isLoading}
+                >
                   Checkout
                 </button>
-                <button className="border-2 border-textGray text-textBlack hover:bg-textGray hover:text-white transition ease-in rounded-full py-2 px-5">
-                  Clear
+                <button
+                  className={`flex space-x-2 items-center border-2 border-textGray text-textBlack hover:bg-textGray hover:text-white transition ease-in rounded-full py-2 px-5 ${
+                    isLoading ? `cursor-wait` : ''
+                  }`}
+                  disabled={isLoading}
+                  onClick={handleClearCart}
+                >
+                  <span>Clear</span>
+                  {isLoading ? (
+                    <AiOutlineLoading className="animate-spin" />
+                  ) : (
+                    ''
+                  )}
                 </button>
               </div>
             </div>

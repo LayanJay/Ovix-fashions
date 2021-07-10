@@ -47,6 +47,12 @@ const Product = ({ product }) => {
 
   const { setCart } = useCartDispatch()
 
+  const handleAddToBagState = ({ cart }) => {
+    setCart(cart)
+    setIsAdded(true)
+    setIsLoading(false)
+  }
+
   const {
     id,
     name,
@@ -83,14 +89,9 @@ const Product = ({ product }) => {
 
       commerce.cart
         .add(id, 1, variantData)
-        .then(({ cart }) => setCart(cart))
-        .then(() => setIsAdded(true))
+        .then((json) => handleAddToBagState(json))
     }
   }
-
-  useEffect(() => {
-    if (isAdded === true) setIsLoading(false)
-  }, [isAdded])
 
   return (
     <>
@@ -109,7 +110,7 @@ const Product = ({ product }) => {
             width={width * 2}
             height={height * 2}
             layout="intrinsic"
-            quality={85}
+            quality={65}
           />
           <div
             id="brownBox"
@@ -152,7 +153,10 @@ const Product = ({ product }) => {
               {formatted_with_code}
             </p>
             <button
-              className="flex space-x-2 items-center py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in"
+              className={`flex space-x-2 items-center py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in ${
+                isLoading ? 'cursor-wait' : ''
+              }`}
+              disabled={isLoading}
               onClick={handleAddToBag}
             >
               <span>Add to bag</span>
