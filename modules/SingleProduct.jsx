@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { gsap } from 'gsap'
 import { useCartDispatch } from '../context/cart'
 import { MdKeyboardBackspace } from 'react-icons/md'
+import { AiOutlineLoading } from 'react-icons/ai'
 import commerce from '../lib/commerce'
 
 const Product = ({ product }) => {
@@ -29,11 +30,18 @@ const Product = ({ product }) => {
       )
   }, [])
 
+  const [isAdded, setIsAdded] = useState(null)
+  const [isLoading, setIsLoading] = useState(false)
   const [variant, setVariant] = useState({
     groupId: '',
     id: '',
     name: '',
   })
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsAdded(null), 4000)
+    return () => clearTimeout(timer)
+  }, [isAdded])
 
   const router = useRouter()
 
@@ -71,12 +79,18 @@ const Product = ({ product }) => {
         [variant.groupId]: variant.id,
       }
 
+      setIsLoading(true)
+
       commerce.cart
         .add(id, 1, variantData)
         .then(({ cart }) => setCart(cart))
-        .then(() => router.push('/bag'))
+        .then(() => setIsAdded(true))
     }
   }
+
+  useEffect(() => {
+    if (isAdded === true) setIsLoading(false)
+  }, [isAdded])
 
   return (
     <>
@@ -138,10 +152,11 @@ const Product = ({ product }) => {
               {formatted_with_code}
             </p>
             <button
-              className="py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in"
+              className="flex space-x-2 items-center py-2 px-4 border-2 border-offBrown rounded-full hover:bg-brown-dark hover:text-white font-medium transition ease-in"
               onClick={handleAddToBag}
             >
-              Add to bag
+              <span>Add to bag</span>
+              {isLoading ? <AiOutlineLoading className="animate-spin" /> : ''}
             </button>
             {sold_out ? (
               <p className="font-semibold text-lg text-soldOut select-none">
@@ -152,6 +167,16 @@ const Product = ({ product }) => {
             )}
           </div>
         </div>
+        {isAdded ? (
+          <div
+            id="addCart"
+            className="fixed right-4 top-24 bg-brown-light border-2 border-brown-dark text-brown-dark font-medium text-lg sm:text-xl text-center max-w-sm rounded-lg shadow-lg py-5 px-8 overflow-hidden"
+          >
+            Added to the cart
+          </div>
+        ) : (
+          ''
+        )}
       </section>
     </>
   )
