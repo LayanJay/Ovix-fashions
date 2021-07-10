@@ -5,19 +5,15 @@ import Button from '../modules/thankyoupage/Button'
 
 const ThankYouPage = () => {
   return (
-    <Layout title="Oviz Fashions | Thank You" fullFooter={false}>
+    <Layout title="Thank You | Oviz Fashions" fullFooter={false}>
       <Container>
-      <div className="pt-48 pl-32 py-48">
-      <Message/>
-      <div className="flex justify-center pb-16">
-        <Button/>
-      </div>      
-      </div>
+        <section className="flex flex-col justify-center items-center min-h-screen">
+          <Message />
+          <Button />
+        </section>
       </Container>
-      
     </Layout>
   )
 }
 
 export default ThankYouPage
-

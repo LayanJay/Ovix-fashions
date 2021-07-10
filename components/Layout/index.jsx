@@ -27,7 +27,7 @@ const Layout = ({
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{title || `Oviz Fashions`}</title>
         <meta name="description" content="" />
         <meta name="image" content={`${image || `/assets/favicon.png`}`} />
         <meta property="og:title" content={`${title || `Oviz Fashions`}`} />

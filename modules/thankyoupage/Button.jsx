@@ -1,22 +1,17 @@
-// import Container from '../../components/Layout/Container'
 import Link from 'next/link'
 
 const Button = () => {
-    return(
-        <>
-        <section>
-           
-                <Link href='/'><a>
-                <div className="font-semibold text-sm text-brown-semiDark font-roboto rounded-full cursor-pointer border-brown-semiDark border-2 hover:text-offBrown hover:bg-gray-300">
-                    <button className="p-1">Continue Shopping</button>
-                    </div>
-                </a>
-                    
-                </Link>
-       </section>
-        </>
-    )
-
+  return (
+    <section>
+      <Link href="/">
+        <a>
+          <button className="text-brown-dark rounded-full border-brown-dark border-2 hover:text-white hover:bg-brown-dark transition ease-in py-2 px-4 w-56 sm:w-60">
+            Continue Shopping
+          </button>
+        </a>
+      </Link>
+    </section>
+  )
 }
 
 export default Button

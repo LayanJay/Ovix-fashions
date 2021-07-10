@@ -1,28 +1,20 @@
 const Message = () => {
   return (
-    <>
-      <section>
-        <section>
-          <div className="font-bold text-4xl text-brown-dark font-playFair p-12 text-center">
-            <h1>Congratulations</h1>
-          </div>
-          <div className="font-semibold text-lg text-gray-600 font-roboto p-8 text-center">
-            <h3>Your order has been successfully placed</h3>
-          </div>
-          <div className="font-thin text-sm text-gray-500 font-roboto p-6  text-center">
-            <p>We have sent you an email</p>
-          </div>
-          <div className="font-semibold text-lg text-brown-dark font-roboto p-8 text-center">
-            <h4>
-              Thank you for choosing Oviz fashions!
-              <div className="text-center">
-                We truly appreciate the trust you have placed in us.
-              </div>
-            </h4>
-          </div>
-        </section>
-      </section>
-    </>
+    <section className="text-center mb-5">
+      <h1 className="font-bold text-4xl sm:text-5xl md:text-6xl text-brown-dark font-playFair mb-12">
+        Congratulations
+      </h1>
+      <h3 className="font-semibold text-textGray text-xl sm:text-2xl mb-6">
+        Your order has been successfully placed
+      </h3>
+      <p className="mb-6">We have sent you an email</p>
+      <div className="font-medium text-lg text-brown-dark">
+        <h4>
+          <div>Thank you for choosing Oviz fashions!</div>
+          <div>We truly appreciate the trust you have placed in us.</div>
+        </h4>
+      </div>
+    </section>
   )
 }
 
