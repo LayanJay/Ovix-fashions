@@ -28,16 +28,25 @@ const Layout = ({
     <>
       <Head>
         <title>{title || `Oviz Fashions`}</title>
-        <meta name="description" content="" />
+        <meta
+          name="description"
+          content="Our user-friendly shopping experience was created to help you easily find your favorites while discovering new ones. We want you to feel at ease, confident, and carefree in what you wear and how you purchase at Clothing Shop Online. Get your items for a reasonable price with free delivery."
+        />
         <meta name="image" content={`${image || `/assets/favicon.png`}`} />
         <meta property="og:title" content={`${title || `Oviz Fashions`}`} />
-        <meta property="og:description" content="" />
+        <meta
+          property="og:description"
+          content="Our user-friendly shopping experience was created to help you easily find your favorites while discovering new ones. We want you to feel at ease, confident, and carefree in what you wear and how you purchase at Clothing Shop Online. Get your items for a reasonable price with free delivery."
+        />
         <meta
           property="og:image"
           content={`${image || `/assets/favicon.png`}`}
         />
         <meta name="twitter:title" content={`${title || `Oviz Fashions`}`} />
-        <meta name="twitter:description" content="" />
+        <meta
+          name="twitter:description"
+          content="Our user-friendly shopping experience was created to help you easily find your favorites while discovering new ones. We want you to feel at ease, confident, and carefree in what you wear and how you purchase at Clothing Shop Online. Get your items for a reasonable price with free delivery."
+        />
         <meta
           name="twitter:image"
           content={`${image || `/assets/favicon.png`}`}
