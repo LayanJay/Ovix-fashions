@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { useCartState } from '../../context/cart'
 import ovizWhite from '../../public/assets/oviz-o-white.png'
 import ovizBlack from '../../public/assets/oviz-o-black.png'
 import bagBlack from '../../public/assets/totebag-black.svg'
@@ -8,11 +9,12 @@ import { useEffect, useState } from 'react'
 import gsap from 'gsap'
 
 const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
-  let animated = false
-
   const [inverted, setInverted] = useState(invertedNavbar)
 
+  const { total_unique_items } = useCartState()
+
   useEffect(() => {
+    let animated = false
     window.onscroll = () => {
       if (animateNavbarOnScroll) {
         if (window.pageYOffset > 10 && !animated) {
@@ -71,7 +73,7 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
                   layout="intrinsic"
                 />
                 <div className="fixed -mt-5 -ml-1 bg-brown-semiDark text-white w-5 h-5 flex items-center justify-center font-bold rounded-full">
-                  0
+                  {total_unique_items || `0`}
                 </div>
               </div>
             </div>
