@@ -1,12 +1,34 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { gsap } from 'gsap'
 import { useCartDispatch } from '../context/cart'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import commerce from '../lib/commerce'
 
 const Product = ({ product }) => {
+  useEffect(() => {
+    const tl = gsap.timeline()
+
+    tl.to('#brownBox', {
+      duration: 1.6,
+      delay: 0.5,
+      width: 0,
+      ease: 'expo.out',
+    })
+      .from(
+        '#productText h1',
+        { duration: 1, opacity: 0, y: 30, ease: 'power4.out' },
+        1.4
+      )
+      .from(
+        '#productText div',
+        { duration: 1, opacity: 0, y: 30, stagger: 0.1, ease: 'power4.out' },
+        1.5
+      )
+  }, [])
+
   const [variant, setVariant] = useState({
     groupId: '',
     id: '',
@@ -65,7 +87,7 @@ const Product = ({ product }) => {
         >
           <MdKeyboardBackspace className="h-8 w-8" />
         </div>
-        <div className="md:col-span-1 max-w-md md:max-w-lg rounded-full overflow-hidden">
+        <div className="relative md:col-span-1 max-w-md md:max-w-lg rounded-full overflow-hidden">
           <Image
             className="rounded-full transform hover:scale-105 transition ease-in"
             src={url}
@@ -75,8 +97,15 @@ const Product = ({ product }) => {
             layout="intrinsic"
             quality={85}
           />
+          <div
+            id="brownBox"
+            className="absolute top-0 right-0 w-full h-full bg-brown-base"
+          />
         </div>
-        <div className="md:col-span-1 flex flex-col justify-center">
+        <div
+          id="productText"
+          className="md:col-span-1 flex flex-col justify-center"
+        >
           <h1 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl text-brown-dark capitalize leading-8 mb-8 select-none">
             {name}
           </h1>

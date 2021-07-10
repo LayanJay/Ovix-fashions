@@ -23,7 +23,7 @@ const Product = ({ product, dark }) => {
               alt={name}
               layout="intrinsic"
               width={320}
-              height={320}
+              height={380}
               quality={80}
             />
           </div>
