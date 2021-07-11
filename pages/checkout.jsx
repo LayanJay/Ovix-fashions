@@ -1,6 +1,3 @@
-import { useState, useEffect } from 'react'
-import { gsap } from 'gsap'
-import Commerce from '../lib/commerce'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import Container from '../components/Layout/Container'
@@ -10,25 +7,6 @@ import Button from '../components/Button'
 import CartSummary from '../components/CartSummary'
 
 const Checkout = () => {
-  useEffect(() => {
-    const tl = gsap.timeline()
-
-    tl.from('#menCategories div', {
-      delay: 0.4,
-      duration: 0.3,
-      stagger: 0.05,
-      opacity: 0,
-      ease: 'power1.in',
-    }).from('#menProducts div', {
-      delay: 0.1,
-      stagger: 0.05,
-      opacity: 0,
-      y: 5,
-      ease: 'power1.in',
-      duration: 0.3,
-    })
-  }, [])
-
   const router = useRouter()
 
   return (
