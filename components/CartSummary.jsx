@@ -4,7 +4,6 @@ import { useCartState } from '../context/cart'
 
 const CartSummary = () => {
   const { line_items, subtotal } = useCartState()
-  let discount = 0 // TODO
 
   return (
     <div className="w-full flex-1 my-8">

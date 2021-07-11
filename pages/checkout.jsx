@@ -4,13 +4,12 @@ import Commerce from '../lib/commerce'
 import { useRouter } from 'next/router'
 import Layout from '../components/Layout'
 import Container from '../components/Layout/Container'
-import Product from '../components/Product'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import InputBox from '../components/InputBox'
 import Button from '../components/Button'
 import CartSummary from '../components/CartSummary'
 
-const Checkout = ({ categories, allProducts }) => {
+const Checkout = () => {
   useEffect(() => {
     const tl = gsap.timeline()
 
@@ -30,21 +29,7 @@ const Checkout = ({ categories, allProducts }) => {
     })
   }, [])
 
-  const [products, setProducts] = useState(allProducts)
-
   const router = useRouter()
-
-  const handleFilterProducts = (id) => {
-    if (id) {
-      const filter = id
-      const filteredProducts = allProducts.filter((product) =>
-        product.categories.some((category) => category.id === filter)
-      )
-      setProducts(filteredProducts)
-    } else {
-      setProducts(allProducts)
-    }
-  }
 
   return (
     <Layout
@@ -145,23 +130,3 @@ const Checkout = ({ categories, allProducts }) => {
 }
 
 export default Checkout
-
-export const getStaticProps = async () => {
-  const categorySlug = 'men'
-
-  const { data } = await Commerce.categories.list()
-  const categories = data.filter((category) => category.slug.includes('-men'))
-
-  const { data: allProducts } = await Commerce.products.list({
-    category_slug: [categorySlug],
-  })
-
-  return {
-    props: {
-      categories,
-      allProducts: allProducts.reverse(),
-    },
-    // re-validate the site after each and every 4 hours
-    revalidate: 14400,
-  }
-}
