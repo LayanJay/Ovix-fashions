@@ -6,16 +6,21 @@ const CartDispatchContext = createContext()
 
 //actions
 const SET_CART = 'set-cart'
+const SET_CHECKOUT = 'set-checkout'
 
 const initialState = {
   total_items: 0,
   total_unique_items: 0,
   line_items: [],
+  live: null,
+  amount_saved: null,
 }
 
 const reducer = (state, action) => {
   switch (action.type) {
     case SET_CART:
+      return { ...state, ...action.payload }
+    case SET_CHECKOUT:
       return { ...state, ...action.payload }
     default:
       throw new Error(`Unknown action: ${action.type}`)
@@ -31,6 +36,7 @@ export const CartProvider = ({ children }) => {
   }, [])
 
   const setCart = (payload) => dispatch({ type: SET_CART, payload })
+  const setCheckout = (payload) => dispatch({ type: SET_CHECKOUT, payload })
 
   const getCart = async () => {
     try {
@@ -43,7 +49,7 @@ export const CartProvider = ({ children }) => {
   }
 
   return (
-    <CartDispatchContext.Provider value={{ setCart }}>
+    <CartDispatchContext.Provider value={{ setCart, setCheckout }}>
       <CartStateContext.Provider value={state}>
         {children}
       </CartStateContext.Provider>

@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import commerce from '../lib/commerce'
 import Layout from '../components/Layout'
 import Container from '../components/Layout/Container'
 import { MdKeyboardBackspace } from 'react-icons/md'
@@ -7,11 +9,19 @@ import Button from '../components/Button'
 import CartSummary from '../components/CartSummary'
 
 const Checkout = () => {
+  const [checkToken, setCheckToken] = useState()
+
+  useEffect(() => {
+    commerce.checkout
+      .generateTokenFrom('cart', commerce.cart.id())
+      .then((response) => setCheckToken(response.id))
+  }, [])
+
   const router = useRouter()
 
   return (
     <Layout
-      title="Oviz Fashions | Shop Men's"
+      title="Oviz Fashions | Payment &amp; Delivery"
       inverted={false}
       fullFooter={false}
     >
@@ -34,8 +44,17 @@ const Checkout = () => {
               <div className="font-bold">Payment Options</div>
 
               <div className="mt-2 flex items-center">
-                <input type="radio" className="mr-2 text-brown-semiDark" />{' '}
-                <label className="text-brown-dark">Cash on Delivery</label>
+                <input
+                  id="paymentOption"
+                  type="radio"
+                  className="mr-2 text-brown-semiDark cursor-pointer"
+                />{' '}
+                <label
+                  htmlFor="paymentOption"
+                  className="text-brown-dark cursor-pointer"
+                >
+                  Cash on Delivery
+                </label>
               </div>
 
               <div className="font-bold mt-8 mb-4">Delivery Information</div>
@@ -99,7 +118,7 @@ const Checkout = () => {
               </div>
             </div>
 
-            <CartSummary />
+            <CartSummary checkToken={checkToken} />
           </div>
         </div>
       </Container>

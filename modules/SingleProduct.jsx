@@ -38,7 +38,7 @@ const Product = ({ product }) => {
   })
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsAdded(null), 4000)
+    const timer = setTimeout(() => setIsAdded(null), 3500)
     return () => clearTimeout(timer)
   }, [isAdded])
 

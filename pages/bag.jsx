@@ -126,6 +126,7 @@ const CheckoutPage = () => {
                     isLoading ? `cursor-wait` : ''
                   }`}
                   disabled={isLoading}
+                  onClick={() => router.push('/checkout')}
                 >
                   Checkout
                 </button>
