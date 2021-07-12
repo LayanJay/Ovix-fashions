@@ -3,7 +3,9 @@ import Link from 'next/link'
 
 const Product = ({ product, dark }) => {
   const {
-    media: { source },
+    assets: {
+      0: { url },
+    },
     name,
     permalink,
     price: { formatted_with_code },
@@ -19,7 +21,7 @@ const Product = ({ product, dark }) => {
           <div className="rounded-t-full rounded-b-2xl overflow-hidden mb-2">
             <Image
               className="filter hover:brightness-100 brightness-90 rounded-b-2xl transition ease-in"
-              src={source}
+              src={url}
               alt={name}
               layout="intrinsic"
               width={320}

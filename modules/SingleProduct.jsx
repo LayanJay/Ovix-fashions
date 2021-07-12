@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { gsap } from 'gsap'
 import { useCartDispatch } from '../context/cart'
@@ -64,6 +63,7 @@ const Product = ({ product }) => {
         image_dimensions: { width, height },
         url,
       },
+      1: { url: sizeChartUrl },
     },
     variant_groups,
   } = product
@@ -110,7 +110,7 @@ const Product = ({ product }) => {
             width={width * 2}
             height={height * 2}
             layout="intrinsic"
-            quality={65}
+            quality={70}
           />
           <div
             id="brownBox"
@@ -128,11 +128,10 @@ const Product = ({ product }) => {
             className="product-description select-none"
             dangerouslySetInnerHTML={{ __html: description }}
           />
-          {/* TODO: link the size chart pdf */}
           <div className="mt-4 mb-5 font-medium text-lg text-brown-dark">
-            <Link href="#">
-              <a className="hover:underline">Size chart</a>
-            </Link>
+            <a target="_blank" rel="noreferrer" href={sizeChartUrl}>
+              <p className="hover:underline">Size chart</p>
+            </a>
           </div>
 
           <div className="flex items-center space-x-1 sm:space-x-2 mr-4 md:mr-6 mb-5">
@@ -176,7 +175,7 @@ const Product = ({ product }) => {
             id="addCart"
             className="fixed right-4 top-24 bg-brown-light border-2 border-brown-dark text-brown-dark font-medium text-lg sm:text-xl text-center max-w-sm rounded-lg shadow-lg py-5 px-8 overflow-hidden"
           >
-            Added to the cart
+            Added to the bag
           </div>
         ) : (
           ''
