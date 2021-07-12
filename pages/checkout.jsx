@@ -11,7 +11,7 @@ import { useCartDispatch, useCartState } from '../context/cart'
 
 const Checkout = () => {
   const state = useCartState()
-  const { setCheckout } = useCartDispatch()
+  const { setCheckout, setCart } = useCartDispatch()
 
   const [error, setError] = useState(null)
   const [loading, setLoading] = useState(false)
@@ -111,9 +111,10 @@ const Checkout = () => {
 
   console.log(checkoutObject)
 
-  const handleSuccessRes = (response) => {
+  const handleSuccessRes = async (response) => {
     if (response) {
       setLoading(false)
+      await commerce.cart.refresh().then((cart) => setCart(cart))
       return router.push('/thank-you')
     }
   }
