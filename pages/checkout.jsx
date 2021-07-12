@@ -39,8 +39,7 @@ const Checkout = () => {
         .generateTokenFrom('cart', commerce.cart.id())
         .then((response) => getCheckoutToken(response))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  })
 
   const router = useRouter()
 
@@ -109,10 +108,12 @@ const Checkout = () => {
     payment: payment,
   }
 
+  console.log(checkoutObject)
+
   const handleSuccessRes = async (response) => {
     if (response) {
-      setLoading(false)
       await commerce.cart.refresh().then((cart) => setCart(cart))
+      setLoading(false)
       return router.push('/thank-you')
     }
   }
