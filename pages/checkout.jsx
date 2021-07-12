@@ -7,17 +7,137 @@ import { MdKeyboardBackspace } from 'react-icons/md'
 import InputBox from '../components/InputBox'
 import Button from '../components/Button'
 import CartSummary from '../components/CartSummary'
+import { useCartDispatch, useCartState } from '../context/cart'
 
 const Checkout = () => {
-  const [checkToken, setCheckToken] = useState()
+  const state = useCartState()
+  const { setCheckout } = useCartDispatch()
+
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
+  const [formData, setFormData] = useState({
+    firstname: '',
+    lastname: '',
+    email: '',
+    contact1: '',
+    contact2: '',
+    address: '',
+    townCity: '',
+    province: '',
+    postal: '',
+  })
 
   useEffect(() => {
-    commerce.checkout
-      .generateTokenFrom('cart', commerce.cart.id())
-      .then((response) => setCheckToken(response.id))
+    const getCheckoutToken = (response) => {
+      // console.log(response)
+      setCheckout({
+        checkoutToken: response.id,
+      })
+    }
+
+    if (!state.checkoutToken) {
+      commerce.checkout
+        .generateTokenFrom('cart', commerce.cart.id())
+        .then((response) => getCheckoutToken(response))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const router = useRouter()
+
+  const handleFormChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value.trim(),
+    })
+  }
+
+  const lineItems = state.line_items.map((item) => ({
+    [item.id]: {
+      quantity: item.quantity,
+      variants: {
+        [item.variant.id]: item.selected_options[0].option_id,
+      },
+    },
+  }))
+
+  const {
+    firstname,
+    lastname,
+    email,
+    contact1,
+    contact2,
+    address,
+    townCity,
+    province,
+    postal,
+  } = formData
+
+  const customer = {
+    firstname: firstname,
+    lastname: lastname,
+    email: email,
+  }
+
+  const extra = {
+    extr_RyWOwmqMgwnEa2: contact1,
+    extr_ypbroExO3w8n4e: contact2,
+  }
+
+  const billing = {
+    name: `${firstname} ${lastname}`,
+    street: address,
+    town_city: townCity,
+    county_state: province,
+    postal_zip_code: postal,
+    country: 'Sri Lanka',
+  }
+
+  const payment = {
+    gateway: 'manual',
+    manual: {
+      id: 'gway_QlW0RpxRvzJawn',
+    },
+  }
+
+  const checkoutObject = {
+    line_items: lineItems,
+    discount_code: state.discountCode,
+    customer: customer,
+    extra_fields: extra,
+    billing: billing,
+    payment: payment,
+  }
+
+  console.log(checkoutObject)
+
+  const handleSuccessRes = (response) => {
+    if (response) {
+      setLoading(false)
+      return router.push('/thank-you')
+    }
+  }
+
+  const handleError = (error) => {
+    if (error) {
+      setError(error)
+      setLoading(false)
+    }
+  }
+
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    commerce.checkout
+      .capture(state.checkoutToken, checkoutObject)
+      .then((response) => handleSuccessRes(response))
+      .catch((error) => handleError(error))
+  }
+
+  useEffect(() => {
+    const timer = setTimeout(() => setError(null), 3500)
+    return () => clearTimeout(timer)
+  }, [error])
 
   return (
     <Layout
@@ -46,7 +166,9 @@ const Checkout = () => {
               <div className="mt-2 flex items-center">
                 <input
                   id="paymentOption"
+                  readOnly
                   type="radio"
+                  checked={true}
                   className="mr-2 text-brown-semiDark cursor-pointer"
                 />{' '}
                 <label
@@ -58,68 +180,112 @@ const Checkout = () => {
               </div>
 
               <div className="font-bold mt-8 mb-4">Delivery Information</div>
+              <form onSubmit={handleFormSubmit}>
+                <div className="mt-2 items-center grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+                  <InputBox
+                    text="First Name"
+                    name="firstname"
+                    required={true}
+                    onChange={handleFormChange}
+                    placeholder="Enter your first name"
+                  />
+                  <InputBox
+                    text="Last Name"
+                    name="lastname"
+                    required={true}
+                    onChange={handleFormChange}
+                    placeholder="Enter your last name"
+                  />
+                </div>
 
-              <div className="mt-2 items-center grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
-                <InputBox
-                  text="First Name"
-                  required={true}
-                  placeholder="Enter your first name"
-                />
-                <InputBox
-                  text="Last Name"
-                  required={true}
-                  placeholder="Enter your last name"
-                />
-              </div>
+                <div className="mt-8">
+                  <InputBox
+                    type="email"
+                    text="Email"
+                    name="email"
+                    required={true}
+                    onChange={handleFormChange}
+                    placeholder="Enter your email address"
+                  />
+                </div>
 
-              <div className="mt-8">
-                <InputBox
-                  text="Email"
-                  required={true}
-                  placeholder="Enter your email address"
-                />
-              </div>
+                <div className="mt-8 items-center grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+                  <InputBox
+                    type="tel"
+                    text="Personal Contact Number"
+                    name="contact1"
+                    required={true}
+                    onChange={handleFormChange}
+                    placeholder="Mobile"
+                  />
+                  <InputBox
+                    type="tel"
+                    text="Resident Contact Number"
+                    onChange={handleFormChange}
+                    placeholder="Home"
+                    name="contact2"
+                  />
+                </div>
 
-              <div className="mt-8 items-center grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
-                <InputBox
-                  text="Personal Contact Number"
-                  required={true}
-                  placeholder="Mobile"
-                />
-                <InputBox text="Resident Contact Number" placeholder="Home" />
-              </div>
+                <div className="mt-8">
+                  <InputBox
+                    text="Address"
+                    name="address"
+                    onChange={handleFormChange}
+                    placeholder="Enter your full home address"
+                    required={true}
+                  />
+                </div>
 
-              <div className="mt-8">
-                <InputBox
-                  text="Address"
-                  placeholder="Enter your full home address"
-                  required={true}
-                />
-              </div>
+                <div className="mt-8 items-center grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-10">
+                  <InputBox
+                    text="Town City"
+                    name="townCity"
+                    onChange={handleFormChange}
+                    placeholder="Town City"
+                    required
+                  />
+                  <InputBox
+                    text="Province"
+                    name="province"
+                    onChange={handleFormChange}
+                    placeholder="Province"
+                    required
+                  />
+                </div>
 
-              <div className="mt-8">
-                <InputBox
-                  text="Appartment, Suite, etc.."
-                  placeholder="optional"
-                  required={true}
-                />
-              </div>
+                <div className="mt-8 w-1/2">
+                  <InputBox
+                    text="Postal Code"
+                    name="postal"
+                    required={true}
+                    onChange={handleFormChange}
+                    placeholder="Enter postal code"
+                  />
+                </div>
 
-              <div className="mt-8 w-1/2">
-                <InputBox
-                  text="Postal Code"
-                  required={true}
-                  placeholder="Enter postal code"
-                />
-              </div>
-
-              <div className="mt-8 w-40">
-                <Button text="Place Order" />
-              </div>
+                <div className="mt-8 w-40">
+                  <Button
+                    text="Place Order"
+                    type="submit"
+                    isLoading={loading}
+                  />
+                </div>
+              </form>
             </div>
 
-            <CartSummary checkToken={checkToken} />
+            <CartSummary checkToken={state.checkoutToken} />
           </div>
+          {error ? (
+            <div
+              id="addCart"
+              className="fixed right-4 top-24 bg-brown-light border-2 border-brown-dark text-brown-dark font-medium text-lg sm:text-xl text-center max-w-sm rounded-lg shadow-lg py-5 px-8 overflow-hidden"
+            >
+              Something went wrong! Try again later
+            </div>
+          ) : (
+            ''
+          )}
         </div>
       </Container>
     </Layout>

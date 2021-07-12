@@ -1,4 +1,5 @@
 const InputBox = ({
+  type = 'text',
   text,
   placeholder,
   required = false,
@@ -16,8 +17,8 @@ const InputBox = ({
         placeholder={placeholder}
         name={name}
         className="appearance-none placeholder-brown-base border-brown-dark block w-full bg-grey-lighter text-brown-dark border border-grey-lighter rounded-lg h-12 px-4"
-        required="required"
-        type="text"
+        required={required}
+        type={type}
         onChange={onChange}
       />
       <p className="text-red text-xs hidden">Please fill out this field.</p>

@@ -14,6 +14,8 @@ const initialState = {
   line_items: [],
   live: null,
   amount_saved: null,
+  checkoutToken: '',
+  discountCode: '',
 }
 
 const reducer = (state, action) => {

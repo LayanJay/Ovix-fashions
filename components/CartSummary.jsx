@@ -4,8 +4,9 @@ import InputBox from './InputBox'
 import Button from './Button'
 import { useCartState, useCartDispatch } from '../context/cart'
 
-const CartSummary = ({ checkToken }) => {
-  const { line_items, subtotal, live, amount_saved } = useCartState()
+const CartSummary = () => {
+  const { line_items, subtotal, live, amount_saved, checkoutToken } =
+    useCartState()
   const { setCheckout } = useCartDispatch()
 
   const [loading, setLoading] = useState(false)
@@ -14,7 +15,7 @@ const CartSummary = ({ checkToken }) => {
     discountCode: '',
   })
 
-  console.log(live)
+  // console.log(live)
 
   useEffect(() => {
     const timer = setTimeout(() => setIsDiscounted(null), 3500)
@@ -28,6 +29,7 @@ const CartSummary = ({ checkToken }) => {
       setCheckout({
         live,
         amount_saved,
+        discountCode: formData.discountCode,
       })
     } else {
       alert('The discount code you entered is invalid')
@@ -45,7 +47,7 @@ const CartSummary = ({ checkToken }) => {
   const handleDiscountCodeSubmit = (e) => {
     e.preventDefault()
 
-    if (!checkToken) {
+    if (!checkoutToken) {
       alert("You don't have a checkout token")
     } else if (!formData.discountCode) {
       alert('You forgot to enter the discount code')
@@ -53,7 +55,7 @@ const CartSummary = ({ checkToken }) => {
       setLoading(true)
 
       commerce.checkout
-        .checkDiscount(checkToken, {
+        .checkDiscount(checkoutToken, {
           code: formData.discountCode,
         })
         .then((response) => handleCheckData(response))
