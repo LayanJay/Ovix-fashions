@@ -29,7 +29,6 @@ const Checkout = () => {
 
   useEffect(() => {
     const getCheckoutToken = (response) => {
-      // console.log(response)
       setCheckout({
         checkoutToken: response.id,
       })
@@ -100,6 +99,7 @@ const Checkout = () => {
     },
   }
 
+  // full object
   const checkoutObject = {
     line_items: lineItems,
     discount_code: state.discountCode,
@@ -108,8 +108,6 @@ const Checkout = () => {
     billing: billing,
     payment: payment,
   }
-
-  console.log(checkoutObject)
 
   const handleSuccessRes = async (response) => {
     if (response) {

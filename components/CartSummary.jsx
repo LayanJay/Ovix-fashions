@@ -15,8 +15,6 @@ const CartSummary = () => {
     discountCode: '',
   })
 
-  // console.log(live)
-
   useEffect(() => {
     const timer = setTimeout(() => setIsDiscounted(null), 3500)
     return () => clearTimeout(timer)
