@@ -121,6 +121,7 @@ const Checkout = () => {
   const handleError = (error) => {
     if (error) {
       setError(error)
+      console.log(error)
       setLoading(false)
     }
   }
