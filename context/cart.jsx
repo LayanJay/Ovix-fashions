@@ -27,6 +27,7 @@ export const CartProvider = ({ children }) => {
 
   useEffect(() => {
     getCart()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const setCart = (payload) => dispatch({ type: SET_CART, payload })
