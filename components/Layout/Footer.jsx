@@ -50,12 +50,20 @@ const Footer = () => {
             </div>
 
             <div className="inline-flex space-x-4">
-              <a target="_blank" rel="me" href="#">
+              <a
+                target="_blank"
+                rel="me noreferrer"
+                href="https://www.instagram.com/oviz_fashion/"
+              >
                 <div className=" bg-brown-light text-brown-dark hover:text-offWhite hover:bg-brown-footer transition ease-in cursor-pointer w-10 py-4 text-2xl flex justify-center items-center rounded-full">
                   <AiOutlineInstagram />
                 </div>
               </a>
-              <a target="_blank" rel="me" href="#">
+              <a
+                target="_blank"
+                rel="me noreferrer"
+                href="https://www.facebook.com/ovizFashion/"
+              >
                 <div className=" bg-brown-light text-brown-dark hover:text-offWhite hover:bg-brown-footer transition ease-in cursor-pointer w-10 py-4 text-2xl flex justify-center items-center rounded-full">
                   <FaFacebookF />
                 </div>
