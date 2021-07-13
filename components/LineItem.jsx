@@ -38,6 +38,8 @@ const LineItem = ({ item }) => {
       commerce.cart
         .update(id, { quantity: quantity + 1 })
         .then(handleUpdateCart)
+    } else {
+      alert('Request cannot be fulfilled')
     }
   }
 
