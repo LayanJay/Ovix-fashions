@@ -50,15 +50,6 @@ const Checkout = () => {
     })
   }
 
-  // const lineItems = state.line_items.map((item) => ({
-  //   [item.id]: {
-  //     quantity: item.quantity,
-  //     variants: {
-  //       [item.variant.id]: item.selected_options[0].option_id,
-  //     },
-  //   },
-  // }))
-
   const {
     firstname,
     lastname,
@@ -106,9 +97,6 @@ const Checkout = () => {
     billing: billing,
     payment: payment,
   }
-
-  console.log(checkoutObject)
-  console.log(state.checkoutToken)
 
   const handleSuccessRes = async (response) => {
     if (response) {
