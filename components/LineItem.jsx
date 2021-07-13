@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import commerce from '../lib/commerce'
+import useBlurImage from '../hooks/useBlurImage'
 import { useCartDispatch } from '../context/cart'
 import { HiPlus, HiMinusSm } from 'react-icons/hi'
 import { RiCloseLine } from 'react-icons/ri'
@@ -69,12 +70,14 @@ const LineItem = ({ item }) => {
       >
         <Link href={`/products/${permalink}`}>
           <a>
-            <div className="col-span-1 flex items-center justify-center overflow-hidden">
+            <div className="col-span-1 flex items-center justify-center rounded-full overflow-hidden">
               <Image
-                className="rounded-full filter hover:brightness-100 brightness-90 transition ease-in"
+                className="rounded-full transform hover:scale-105 transition ease-in"
                 src={source}
                 alt={name}
                 layout="intrinsic"
+                placeholder="blur"
+                blurDataURL={useBlurImage(152, 217)}
                 width={152}
                 height={217}
                 quality={65}

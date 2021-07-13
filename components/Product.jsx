@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import useBlurImage from '../hooks/useBlurImage'
 
 const Product = ({ product, dark }) => {
   const {
@@ -12,7 +13,7 @@ const Product = ({ product, dark }) => {
   } = product
   return (
     <div
-      className={`max-w-xs mx-auto ${
+      className={`relative max-w-xs mx-auto ${
         dark ? `bg-brown-dark` : `bg-brown-semiDark`
       } text-white px-3 py-3 rounded-full`}
     >
@@ -20,10 +21,12 @@ const Product = ({ product, dark }) => {
         <a>
           <div className="rounded-t-full rounded-b-2xl overflow-hidden mb-2">
             <Image
-              className="filter hover:brightness-100 brightness-90 rounded-b-2xl transition ease-in"
+              className="transform hover:scale-105 rounded-b-2xl transition ease-in"
               src={url}
               alt={name}
               layout="intrinsic"
+              placeholder="blur"
+              blurDataURL={useBlurImage(320, 380)}
               width={320}
               height={380}
               quality={75}

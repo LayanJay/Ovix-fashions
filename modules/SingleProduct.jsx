@@ -6,6 +6,7 @@ import { useCartDispatch } from '../context/cart'
 import { MdKeyboardBackspace } from 'react-icons/md'
 import { AiOutlineLoading } from 'react-icons/ai'
 import commerce from '../lib/commerce'
+import useBlurImage from '../hooks/useBlurImage'
 
 const Product = ({ product }) => {
   useEffect(() => {
@@ -107,6 +108,8 @@ const Product = ({ product }) => {
             className="rounded-full transform hover:scale-105 transition ease-in"
             src={url}
             alt="image"
+            placeholder="blur"
+            blurDataURL={useBlurImage(width * 2, height * 2)}
             width={width * 2}
             height={height * 2}
             layout="intrinsic"
