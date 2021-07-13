@@ -1,0 +1,25 @@
+# *
+User-agent: *
+Disallow: /checkout
+
+# *
+User-agent: *
+Disallow: /bag
+
+# *
+User-agent: *
+Disallow: /404
+
+# *
+User-agent: *
+Disallow: /thank-you
+
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://oviz.lk
+
+# Sitemaps
+Sitemap: https://oviz.lk/sitemap.xml
