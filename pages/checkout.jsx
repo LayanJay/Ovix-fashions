@@ -50,14 +50,14 @@ const Checkout = () => {
     })
   }
 
-  const lineItems = state.line_items.map((item) => ({
-    [item.id]: {
-      quantity: item.quantity,
-      variants: {
-        [item.variant.id]: item.selected_options[0].option_id,
-      },
-    },
-  }))
+  // const lineItems = state.line_items.map((item) => ({
+  //   [item.id]: {
+  //     quantity: item.quantity,
+  //     variants: {
+  //       [item.variant.id]: item.selected_options[0].option_id,
+  //     },
+  //   },
+  // }))
 
   const {
     firstname,
@@ -100,7 +100,6 @@ const Checkout = () => {
 
   // full object
   const checkoutObject = {
-    line_items: lineItems,
     discount_code: state.discountCode,
     customer: customer,
     extra_fields: extra,
