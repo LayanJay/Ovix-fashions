@@ -109,6 +109,7 @@ const Checkout = () => {
   }
 
   console.log(checkoutObject)
+  console.log(state.checkoutToken)
 
   const handleSuccessRes = async (response) => {
     if (response) {
