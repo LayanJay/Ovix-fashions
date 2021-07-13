@@ -30,7 +30,12 @@ const CheckoutPage = () => {
 
   if (line_items.length === 0) {
     return (
-      <Layout title="Oviz Fashions | Shopping Bag" fullFooter={false}>
+      <Layout
+        title="Oviz Fashions | Shopping Bag"
+        fullFooter={false}
+        invertedNavbar={false}
+        animateNavbarOnScroll
+      >
         <Container>
           <section className="flex flex-col items-center justify-center py-20 sm:py-24 md:py-32 min-h-screen">
             <h1 className="font-playFair font-bold text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-center text-brown-dark mb-5">
@@ -66,6 +71,7 @@ const CheckoutPage = () => {
       <Layout
         title="Oviz Fashions | Shopping Bag"
         invertedNavbar={false}
+        animateNavbarOnScroll
         fullFooter={false}
       >
         <section className="min-h-screen py-24 md:py-32">

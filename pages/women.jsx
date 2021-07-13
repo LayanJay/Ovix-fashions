@@ -46,7 +46,8 @@ const ShopWomen = ({ categories, allProducts }) => {
   return (
     <Layout
       title="Oviz Fashions | Shop Women's"
-      inverted={false}
+      invertedNavbar={false}
+      animateNavbarOnScroll
       fullFooter={false}
     >
       <Container>

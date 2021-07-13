@@ -44,9 +44,12 @@ const Footer = () => {
               About us
             </span>
 
-            <div className="text-white font-roboto max-w-md mb-8">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore
+            <div className="text-white font-roboto text-sm max-w-md mb-8">
+              Our user-friendly shopping experience was created to help you
+              easily find your favorites while discovering new ones. We want you
+              to feel at ease, confident, and carefree in what you wear and how
+              you purchase at Clothing Shop Online. Get your items for a
+              reasonable price with free delivery.
             </div>
 
             <div className="inline-flex space-x-4">

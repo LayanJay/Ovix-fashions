@@ -5,7 +5,12 @@ import Container from '../components/Layout/Container'
 
 const NotFoundPage = () => {
   return (
-    <Layout title="404 Not found | Oviz fashions" fullFooter={false}>
+    <Layout
+      title="404 Not found | Oviz fashions"
+      fullFooter={false}
+      invertedNavbar={false}
+      animateNavbarOnScroll
+    >
       <Container>
         <section className="flex flex-col justify-center items-center min-h-screen">
           <Message />

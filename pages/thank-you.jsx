@@ -5,7 +5,12 @@ import Button from '../modules/thankyoupage/Button'
 
 const ThankYouPage = () => {
   return (
-    <Layout title="Thank You | Oviz Fashions" fullFooter={false}>
+    <Layout
+      title="Thank You | Oviz Fashions"
+      fullFooter={false}
+      invertedNavbar={false}
+      animateNavbarOnScroll
+    >
       <Container>
         <section className="flex flex-col justify-center items-center min-h-screen">
           <Message />

@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
 import gsap from 'gsap'
 
 const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
-  const [inverted, setInverted] = useState(invertedNavbar)
+  const [inverted, setInverted] = useState(true)
 
   const { total_unique_items } = useCartState()
 
@@ -42,6 +42,7 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
         }
       }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -54,7 +55,9 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
           <a>
             <div className="w-8 pt-1">
               <Image
-                src={inverted ? ovizWhite : ovizBlack}
+                src={
+                  !invertedNavbar ? ovizBlack : inverted ? ovizWhite : ovizBlack
+                }
                 alt="navbar elements"
                 layout="intrinsic"
               />
@@ -68,7 +71,9 @@ const Navbar = ({ invertedNavbar, animateNavbarOnScroll = false }) => {
             <div className="">
               <div className="w-9">
                 <Image
-                  src={inverted ? bagWhite : bagBlack}
+                  src={
+                    !invertedNavbar ? bagBlack : inverted ? bagWhite : bagBlack
+                  }
                   alt="navbar elements"
                   layout="intrinsic"
                 />

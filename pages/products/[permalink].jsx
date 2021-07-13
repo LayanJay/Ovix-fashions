@@ -8,6 +8,8 @@ const SingleProductPage = ({ product }) => {
     <Layout
       title={`${product.name} | Oviz Fashions`}
       image={product.media.source}
+      invertedNavbar={false}
+      animateNavbarOnScroll
       fullFooter={false}
     >
       <Container>

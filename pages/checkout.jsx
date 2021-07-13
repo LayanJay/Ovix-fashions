@@ -131,7 +131,8 @@ const Checkout = () => {
   return (
     <Layout
       title="Oviz Fashions | Payment &amp; Delivery"
-      inverted={false}
+      invertedNavbar={false}
+      animateNavbarOnScroll
       fullFooter={false}
     >
       <Container>
