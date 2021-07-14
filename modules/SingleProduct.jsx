@@ -36,7 +36,9 @@ const Product = ({ product }) => {
     groupId: '',
     id: '',
     name: '',
+    inventory: null,
   })
+  const [variantGrps, setVariantGrps] = useState([])
 
   useEffect(() => {
     const timer = setTimeout(() => setIsAdded(null), 3500)
@@ -57,7 +59,6 @@ const Product = ({ product }) => {
     id,
     name,
     description,
-    is: { sold_out },
     price: { formatted_with_code },
     assets: {
       0: {
@@ -69,18 +70,47 @@ const Product = ({ product }) => {
     variant_groups,
   } = product
 
+  const handleGetVariantGroups = (data) => {
+    const variants = data.map((variant) => ({
+      id: variant.id,
+      inventory: variant.inventory,
+      option: variant.options,
+    }))
+    setVariantGrps(variants)
+  }
+
+  useEffect(() => {
+    commerce.products
+      .getVariants(id, {})
+      .then((variants) => handleGetVariantGroups(variants.data))
+  }, [id])
+
   const setSize = (id, name) => {
-    setVariant({
-      ...variant,
-      groupId: variant_groups[0].id,
-      id: id,
-      name: name,
-    })
+    const variantGrpData = {
+      [variant_groups[0].id]: id,
+    }
+
+    for (let i = 0; i < variantGrps.length; i++) {
+      if (
+        JSON.stringify(variantGrps[i].option) === JSON.stringify(variantGrpData)
+      ) {
+        setVariant({
+          ...variant,
+          groupId: variant_groups[0].id,
+          id: id,
+          name: name,
+          inventory: variantGrps[i].inventory,
+        })
+        break
+      }
+    }
   }
 
   const handleAddToBag = () => {
     if (variant.name === '' && variant.id === '') {
       alert('You forgot to choose the item size!')
+    } else if (variant.inventory === 0) {
+      alert('Selected item size is currently not available!')
     } else {
       const variantData = {
         [variant.groupId]: variant.id,
@@ -164,7 +194,7 @@ const Product = ({ product }) => {
               <span>Add to bag</span>
               {isLoading ? <AiOutlineLoading className="animate-spin" /> : ''}
             </button>
-            {sold_out ? (
+            {variant?.inventory === 0 ? (
               <p className="font-semibold text-lg text-soldOut select-none">
                 SOLD OUT
               </p>
