@@ -32,6 +32,10 @@ const HeroSection = () => {
         { duration: 0.6, y: -50, opacity: 1, ease: 'power3.out' },
         1.5
       )
+
+    gsap
+      .fromTo('#mouse', { y: 6 }, { y: 10, yoyo: true, repeat: -1 }, '<')
+      .repeat(-1)
   }, [])
 
   return (
