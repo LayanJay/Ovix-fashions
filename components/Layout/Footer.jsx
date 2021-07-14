@@ -16,7 +16,7 @@ const Footer = () => {
                 <MdLocationOn />
               </div>
               <div className="text-white w-56 group-hover:underline">
-                No. 420, Vihara Mawatha, Kaduwela, Malabe
+                No. 232, Main Street, Bandarawela.
               </div>
             </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
                 <MdLocalPhone />
               </div>
               <div className="text-white w-56 group-hover:underline">
-                +94 76 6868 231
+                +94 77 744 4430
               </div>
             </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
                 <MdMailOutline />
               </div>
               <div className="text-white w-56 group-hover:underline">
-                info@ovizfashions.lk
+                ovizfashionboutique@gmail.com
               </div>
             </div>
           </div>
