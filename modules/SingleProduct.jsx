@@ -179,6 +179,13 @@ const Product = ({ product }) => {
                 {name}
               </button>
             ))}
+            {variant?.inventory === 0 ? (
+              <p className="font-semibold text-lg text-soldOut select-none">
+                SOLD OUT
+              </p>
+            ) : (
+              ''
+            )}
           </div>
           <div className="flex items-center space-x-3 md:space-x-5">
             <p className="font-medium text-xl hover:underline transition ease-in select-none">
@@ -194,13 +201,6 @@ const Product = ({ product }) => {
               <span>Add to bag</span>
               {isLoading ? <AiOutlineLoading className="animate-spin" /> : ''}
             </button>
-            {variant?.inventory === 0 ? (
-              <p className="font-semibold text-lg text-soldOut select-none">
-                SOLD OUT
-              </p>
-            ) : (
-              ''
-            )}
           </div>
         </div>
         {isAdded ? (
