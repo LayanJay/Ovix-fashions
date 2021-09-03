@@ -69,7 +69,7 @@ const Footer = () => {
       </Container>
       <div className="bg-brown-footer bg-opacity-70 font-roboto text-xs py-5">
         <p className="text-center text-white">
-          © 2021 Oviz Fashions. All rights reserved
+          © 2021 Ovix Fashions. All rights reserved
         </p>
       </div>
     </footer>
