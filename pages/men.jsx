@@ -45,7 +45,7 @@ const ShopMen = ({ categories, allProducts }) => {
 
   return (
     <Layout
-      title="Oviz Fashions | Shop Men's"
+      title="Ovix Fashions | Shop Men's"
       invertedNavbar={false}
       animateNavbarOnScroll
       fullFooter={false}

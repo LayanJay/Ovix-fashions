@@ -130,7 +130,7 @@ const Checkout = () => {
 
   return (
     <Layout
-      title="Oviz Fashions | Payment &amp; Delivery"
+      title="Ovix Fashions | Payment &amp; Delivery"
       invertedNavbar={false}
       animateNavbarOnScroll
       fullFooter={false}

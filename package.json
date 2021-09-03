@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "postbuild": "next-sitemap --config custom-next-sitemap.js"
+    "postbuild": "next-sitemap --config custom-next-sitemap.js",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@chec/commerce.js": "^2.7.1",
@@ -24,9 +25,15 @@
     "autoprefixer": "^10.2.6",
     "eslint": "^7.30.0",
     "eslint-config-next": "^11.0.1",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
     "next-sitemap": "^1.6.133",
     "postcss": "^8.3.5",
     "prettier": "^2.3.2",
     "tailwindcss": "^2.2.4"
+  },
+  "lint-staged": {
+    "*.{js, jsx}": "eslint --cache --fix",
+    "*.{js, jsx, css,md}": "prettier --write"
   }
 }

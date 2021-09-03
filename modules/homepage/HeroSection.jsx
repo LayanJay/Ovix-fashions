@@ -62,19 +62,19 @@ const HeroSection = () => {
               id="header1"
               className="font-playFair font-bold text-brown-light text-6xl md:text-7xl"
             >
-              OVIZ
+              OVIX
             </h2>
             <h2
               id="header2"
               className="font-playFair font-bold text-brown-light text-6xl md:text-7xl"
             >
-              OVIZ
+              OVIX
             </h2>
             <h2
               id="header3"
               className="font-playFair font-bold text-brown-light text-6xl md:text-7xl"
             >
-              OVIZ
+              OVIX
             </h2>
           </div>
           <div className="absolute bottom-10 md:bottom-28 max-w-sm">

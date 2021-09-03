@@ -6,7 +6,7 @@ import Button from '../modules/thankyoupage/Button'
 const ThankYouPage = () => {
   return (
     <Layout
-      title="Thank You | Oviz Fashions"
+      title="Thank You | Ovix Fashions"
       fullFooter={false}
       invertedNavbar={false}
       animateNavbarOnScroll

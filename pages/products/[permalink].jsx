@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 const SingleProductPage = ({ product }) => {
   return (
     <Layout
-      title={`${product.name} | Oviz Fashions`}
+      title={`${product.name} | Ovix Fashions`}
       image={product.media.source}
       invertedNavbar={false}
       animateNavbarOnScroll

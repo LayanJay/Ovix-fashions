@@ -11,7 +11,7 @@ import Container from '../components/Layout/Container'
 const Home = ({ featured, latest }) => {
   return (
     <Layout
-      title="Oviz Fashions | Your Charming Beauty is Our Passion"
+      title="Ovix Fashions | Your Charming Beauty is Our Passion"
       fullFooter={true}
       invertedNavbar
       animateNavbarOnScroll={true}

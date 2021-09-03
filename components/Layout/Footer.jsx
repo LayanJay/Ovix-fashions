@@ -16,7 +16,7 @@ const Footer = () => {
                 <MdLocationOn />
               </div>
               <div className="text-white w-56 group-hover:underline">
-                No. 232, Main Street, Bandarawela.
+                No. 232, Lorem Ipsum, Dolar sit.
               </div>
             </div>
 
@@ -25,7 +25,7 @@ const Footer = () => {
                 <MdLocalPhone />
               </div>
               <div className="text-white w-56 group-hover:underline">
-                +94 77 744 4430
+                +94 77 ### ####
               </div>
             </div>
 
@@ -34,7 +34,7 @@ const Footer = () => {
                 <MdMailOutline />
               </div>
               <div className="text-white w-56 group-hover:underline">
-                ovizfashionboutique@gmail.com
+                loremipsumdolarsit@gmail.com
               </div>
             </div>
           </div>
@@ -53,20 +53,12 @@ const Footer = () => {
             </div>
 
             <div className="inline-flex space-x-4">
-              <a
-                target="_blank"
-                rel="me noreferrer"
-                href="https://www.instagram.com/oviz_fashion/"
-              >
+              <a rel="me noreferrer" href="#">
                 <div className=" bg-brown-light text-brown-dark hover:text-offWhite hover:bg-brown-footer transition ease-in cursor-pointer w-10 py-4 text-2xl flex justify-center items-center rounded-full">
                   <AiOutlineInstagram />
                 </div>
               </a>
-              <a
-                target="_blank"
-                rel="me noreferrer"
-                href="https://www.facebook.com/ovizFashion/"
-              >
+              <a rel="me noreferrer" href="#">
                 <div className=" bg-brown-light text-brown-dark hover:text-offWhite hover:bg-brown-footer transition ease-in cursor-pointer w-10 py-4 text-2xl flex justify-center items-center rounded-full">
                   <FaFacebookF />
                 </div>

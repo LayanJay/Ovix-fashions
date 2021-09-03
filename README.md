@@ -1,29 +1,57 @@
-# Next.js + Tailwind CSS Example
+# Ovix Fashions (e-Commerce Example)
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## Intro
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+Here is an e-Commerce example for a fashion store built with cutting-edge technologies. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Preview
+![Ovix-fashions](https://socialify.git.ci/LayanJay/Ovix-fashions/image?language=1&logo=https%3A%2F%2Fgithub.com%2FLayanJay%2FOvix-fashions%2Fblob%2Fmain%2Fpublic%2Fassets%2Ffavicon.png%3Fraw%3Dtrue&owner=1&pattern=Diagonal%20Stripes&stargazers=1&theme=Dark)
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+**NOTE**: This is for academic purposes only. The products listed here are only for the demonstration.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Tech Stack
 
-## Deploy your own
+- Reactjs (Nextjs)
+- TailwindCss
+- Commercejs
+- Vercel
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Contributors
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+<a href="https://github.com/LayanJay/Ovix-fashions/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=LayanJay/Ovix-fashions" />
+</a>
 
-## How to use
+## Contribution Guide
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+1. Fork the repository
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+2. Clone the repository
+
+```
+git clone https://github.com/LayanJay/hulu-rebuild.git
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+3. Create Feature branch and checkout
+   _Replace <BRANCH_NAME> with meaningful name. For an example navbar. See the guide for the more details [Link](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow)_
+
+```
+git checkout -b feature/<BRANCH_NAME>
+```
+
+4. Do your modifications
+
+5. Stage Changes and commit
+
+```
+git add .
+git commit -m "<Commit message>"
+```
+
+6. Push Changes
+
+```
+git push --set-upstream origin feature/<BRANCH_NAME>
+```
+
+7. Make a Pull Request.
+   _See the guide for more details [Link](https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request)_

@@ -31,7 +31,7 @@ const CheckoutPage = () => {
   if (line_items.length === 0) {
     return (
       <Layout
-        title="Oviz Fashions | Shopping Bag"
+        title="Ovix Fashions | Shopping Bag"
         fullFooter={false}
         invertedNavbar={false}
         animateNavbarOnScroll
@@ -69,7 +69,7 @@ const CheckoutPage = () => {
   } else {
     return (
       <Layout
-        title="Oviz Fashions | Shopping Bag"
+        title="Ovix Fashions | Shopping Bag"
         invertedNavbar={false}
         animateNavbarOnScroll
         fullFooter={false}
