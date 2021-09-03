@@ -28,7 +28,7 @@ Here is an e-Commerce example for a fashion store built with cutting-edge techno
 2. Clone the repository
 
 ```
-git clone https://github.com/LayanJay/hulu-rebuild.git
+git clone https://github.com/LayanJay/Ovix-fashions.git
 ```
 
 3. Create Feature branch and checkout
