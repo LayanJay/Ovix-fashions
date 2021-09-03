@@ -1,6 +1,6 @@
 # Ovix Fashions (e-Commerce Example)
 
-## Intro
+## Introduction
 
 Here is an e-Commerce example for a fashion store built with cutting-edge technologies. This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
